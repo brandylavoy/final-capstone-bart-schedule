@@ -1,10 +1,58 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>BART Schedule</title>
+    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+
+
 </head>
+
 <body>
+    <header>
+        <h1>Where will BART take you today?</h1>
+        <br>
+        <section class="user-input" id="userInput">
+
+            <form id="scheduleSearch" class="search">
+                <input type="text" name="cityName" id="cityName" class="city-name" placeholder=" Enter US City, State (Ex. Napa, CA)..." />
+                <input id="searchButton" type="submit" value="Submit" class="search-button" onclick="document.getElementById('homeScreen').style.display = 'none' ;" />
+                <button id="reset" onClick="window.location.reload()" class="reset">Reset Search</button>
+            </form>
+        </section>
+
+    </header>
+    <div class="home-screen" id="homeScreen" style="display: block">
+
+    </div>
+    <div class="wrapper">
+        <section class="display-results">
+            <ul class="activity-results">
+            </ul>
+        </section>
+        <section class="dashboard" id="dashboard">
+            <h2>Favorites</h2>
+            <ul class="favoritesContainer" id="favoritesContainer">
+
+            </ul>
+
+        </section>
+    </div>
+    <br>
+    <footer class="contact">
+        <h6>Created by Brandy La Voy</h6>
+    </footer>
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="client.js"></script>
+
+
 
 </body>
+
 </html>

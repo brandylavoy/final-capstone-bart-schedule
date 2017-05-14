@@ -1,0 +1,90 @@
+/*css resets*/
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    text-decoration: none;
+    /*The box-sizing property is used to tell the browser what the sizing properties (width and height) should include border-box.*/
+    box-sizing: border-box;
+    /*reset Chrome user agent styles*/
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-before: 0px;
+    -webkit-padding-after: 0px;
+    -webkit-padding-start: 0px;
+    -webkit-padding-end: 0px;
+    /*reset Firefox user agent styles*/
+    -moz-margin-before: 0px;
+    -moz-margin-after: 0px;
+    -moz-margin-start: 0px;
+    -moz-margin-end: 0px;
+    -moz-padding-before: 0px;
+    -moz-padding-after: 0px;
+    -moz-padding-start: 0px;
+    -moz-padding-end: 0px;
+    /*reset Internet Explorer user agent styles*/
+    -ms-margin-before: 0px;
+    -ms-margin-after: 0px;
+    -ms-margin-start: 0px;
+    -ms-margin-end: 0px;
+    -ms-padding-before: 0px;
+    -ms-padding-after: 0px;
+    -ms-padding-start: 0px;
+    -ms-padding-end: 0px;
+    /*reset Opera user agent styles*/
+    -o-margin-before: 0px;
+    -o-margin-after: 0px;
+    -o-margin-start: 0px;
+    -o-margin-end: 0px;
+    -o-padding-before: 0px;
+    -o-padding-after: 0px;
+    -o-padding-start: 0px;
+    -o-padding-end: 0px;
+    font-family: 'Merriweather', serif;
+}
+
+button {
+    background-color: transparent;
+}
+
+
+/*general styling*/
+
+/*
+html {
+    background: rgba(0, 0, 0, 0) url("../images/BART_cc_map_20141029.png") no-repeat center center fixed;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: 50%;
+    margin: 10px;
+}
+*/
+
+@media only screen and (max-width: 800px) {
+    section.display-results ul li {
+        width: 60%;
+        margin: 0.5rem auto;
+        display: block;
+    }
+    section.user-input input,
+    section.user-input select {
+        width: 60% !important;
+        margin: 1rem auto;
+        display: block;
+    }
+    .display-results .activity-results .events {
+        width: 100%;
+        margin: 0.5rem auto;
+        display: block;
+    }
+    .dashboard .favoritesContainer .favorites {
+        width: 100%;
+        margin: 0.5rem auto;
+        display: block;
+    }
+}

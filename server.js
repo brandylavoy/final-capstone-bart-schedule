@@ -6,18 +6,20 @@ var mongoose = require('mongoose');
 var config = require('./config');
 var app = express();
 var schedule = require('./models/schedule');
-app.use(express.static('public'));
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
 
+var stationsArray = [
+    ]
 
-var runServer = function(callback) {
-    mongoose.connect(config.DATABASE_URL, function(err) {
+var runServer = function (callback) {
+    mongoose.connect(config.DATABASE_URL, function (err) {
         if (err && callback) {
             return callback(err);
         }
 
-        app.listen(config.PORT, function() {
+        app.listen(config.PORT, function () {
             console.log('Listening on localhost:' + config.PORT);
             if (callback) {
                 callback();
@@ -27,7 +29,7 @@ var runServer = function(callback) {
 };
 
 if (require.main === module) {
-    runServer(function(err) {
+    runServer(function (err) {
         if (err) {
             console.error(err);
         }
@@ -55,27 +57,27 @@ if (require.main === module) {
 //    return emitter;
 //};
 
-var getFromBart = function(searchTerm) {
+var getFromBart = function (searchTerm) {
     var emitter = new events.EventEmitter();
     //console.log("inside getFromActive function");
     // These code snippets use an open-source library. http://unirest.io/nodejs
-    unirest.get("https://community-bart.p.mashape.com/sched.aspx?cmd=arrive&dest=rock&orig=24th&json=y ")
+    unirest.get("https://community-bart.p.mashape.com/sched.aspx?cmd=arrive&dest=ucty&orig=woak&json=y ")
         .header("X-Mashape-Key", "poOJuuOnJ6mshQZP2u4lJ6vdAISUp1ob0hnjsnif57TGxBXMwj")
-//        .header("Accept", "text/plain")
+        //        .header("Accept", "text/plain")
         .header("Accept", "application/json")
         .end(function (result) {
 
-        //console.log(result.status, result.headers, result.body);
-        //success scenario
-        if (result.ok) {
-            emitter.emit('end', result.body);
-        }
-        //failure scenario
-        else {
-            emitter.emit('error', result.status);
-        }
-        console.log(result.status, result.headers, result.body);
-    });
+            //console.log(result.status, result.headers, result.body);
+            //success scenario
+            if (result.ok) {
+                emitter.emit('end', result.body);
+            }
+            //failure scenario
+            else {
+                emitter.emit('error', result.status);
+            }
+            console.log(result.status, result.headers, result.body);
+        });
 
     return emitter;
 };
@@ -134,8 +136,8 @@ app.get('/populate-favorites', function (req, res) {
     });
 });
 
-app.delete('/delete-favorites/:favoritesId', function(req, res) {
-    schedule.findByIdAndRemove(req.params.favoritesId, function(err, items) {
+app.delete('/delete-favorites/:favoritesId', function (req, res) {
+    schedule.findByIdAndRemove(req.params.favoritesId, function (err, items) {
         if (err)
             return res.status(404).json({
                 message: 'Item not found.'
