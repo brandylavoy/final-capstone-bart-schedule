@@ -4,43 +4,60 @@
 <head>
     <meta charset="UTF-8">
     <title>BART Schedule</title>
-    <link rel="stylesheet" href="styles.css" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/FontAwesome.otf">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.svg">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.ttf">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.woff">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
     <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" type="text/css" />
 
 
 </head>
 
 <body>
     <header>
-        <h1>Where will BART take you today?</h1>
-        <br>
-        <section class="user-input" id="userInput">
-
-            <form id="scheduleSearch" class="search">
-                <input type="text" name="cityName" id="cityName" class="city-name" placeholder=" Enter US City, State (Ex. Napa, CA)..." />
-                <input id="searchButton" type="submit" value="Submit" class="search-button" onclick="document.getElementById('homeScreen').style.display = 'none' ;" />
-                <button id="reset" onClick="window.location.reload()" class="reset">Reset Search</button>
-            </form>
-        </section>
-
+        <h1>
+            <img src="images/Bart-logo.svg" class="logo"> Where will BART take you today?
+        </h1>
     </header>
-    <div class="home-screen" id="homeScreen" style="display: block">
+    <section class="user-input" id="userInput">
+        <form id="scheduleSearch" class="search">
+            <select name="cityName" id="cityName" class="city-name">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
 
-    </div>
-    <div class="wrapper">
-        <section class="display-results">
-            <ul class="activity-results">
-            </ul>
-        </section>
-        <section class="dashboard" id="dashboard">
-            <h2>Favorites</h2>
-            <ul class="favoritesContainer" id="favoritesContainer">
 
-            </ul>
+            <select name=" cityNameDestination" id="cityNameDestination" class="city-name-destination">
+                <option value="volvo">Volvo</option>
+                <option value="saab">Saab</option>
+                <option value="mercedes">Mercedes</option>
+                <option value="audi">Audi</option>
+            </select>
+            <input id="searchButton" type="submit" value="Submit" class="search-button" />
 
-        </section>
-    </div>
-    <br>
+            <!--           <button id="reset" onClick="window.location.reload()" class="reset">Reset Search</button>-->
+        </form>
+    </section>
+
+    <section class="display-results">
+        <ul class="activity-results">
+        </ul>
+    </section>
+    <section class="dashboard" id="dashboard">
+        <h2>Favorites</h2>
+        <ul class="favoritesContainer" id="favoritesContainer">
+
+        </ul>
+
+    </section>
+
+
     <footer class="contact">
         <h6>Created by Brandy La Voy</h6>
     </footer>

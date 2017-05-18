@@ -1,53 +1,53 @@
 /* global $ */
 
 var stationToLocation_mapper = {
-    //    these 4 stations are causing errors becuase Brackets auto-formats them to have a space
-    //    12TH: "12th St. Oakland City Center BART Station, Broadway, Oakland, CA",
-    //    16TH: "16th St. Mission Station, Mission Street, San Francisco, California",
-    //    19TH: "19th Street BART station, Broadway, Oakland, CA",
-    //    24TH: "24th St Mission BART Station, Mission Street, San Francisco, CA",
-    ASHB: "Ashby BART Station, Adeline Street, Berkeley, CA",
-    BALB: "Balboa Park BART Station, Geneva Avenue, San Francisco, CA",
-    BAYF: "Bay Fair BART Station, Hesperian Boulevard, San Leandro, California",
-    CAST: "Castro Valley BART Station, Norbridge Avenue, Castro Valley, CA",
-    CIVC: "Civic Center BART Station, Market St, San Francisco, CA",
-    COLS: "Coliseum Bart Station, Oakland, CA",
-    COLM: "Colma BART Station, D St, Colma, CA",
-    CONS: "Concord BART Station, Oakland Avenue, Concord, CA",
-    DALY: "Daly City BART Station, Daly City, CA",
-    DBRK: "Downtown Berkeley BART Station, Shattuck Avenue, Berkeley, CA",
-    DUBL: "Dublin/Pleasanton BART Station, Owens Drive, Pleasanton, California",
-    DELN: "El Cerrito del Norte BART Station, Cutting Boulevard, El Cerrito, CA",
-    PLZA: "El Cerrito Plaza BART Station, Fairmount Avenue, El Cerrito, CA",
-    EMBR: "Embarcadero BART Station, Market Street, San Francisco, CA",
-    FRMT: "Fremont BART Station, Bart Way, Fremont, CA",
-    FTVL: "Fruitvale BART Station, East 12th Street, Oakland, CA",
-    GLEN: "Glen Park BART Station, Diamond Street, San Francisco, CA",
-    HAYW: "Hayward BART Station, Hayward, CA",
-    LAFY: "Lafayette BART Station, Deer Hill Road, Lafayette, CA",
-    LAKE: "Lake Merritt BART Station, Madison Street, Oakland, CA",
-    MCAR: "MacArthur BART Station, 40th Street, Oakland, CA",
-    MLBR: "Millbrae BART Station, Rollins Road, Millbrae, CA",
-    MONT: "Montgomery St. BART Station, Market Street, San Francisco, CA",
-    NBRK: "North Berkeley BART Station, Sacramento Street, Berkeley, CA",
-    NCON: "North Concord/Martinez BART Station, Port Chicago Highway, Concord, CA",
-    OAKL: "Oakland International Airport (OAK) Station, Oakland, CA 94621",
-    ORIN: "Orinda BART Station, Camino Pablo, Orinda, CA",
-    PITT: "Pittsburg/Bay Point BART Station, West Leland Road, Pittsburg, CA",
-    PHIL: "Pleasant Hill/Contra Costa Centre BART Station, Treat Blvd CA",
-    POWL: "Powell BART Station, Market Street, San Francisco, CA",
-    RICH: "Richmond BART Station, Nevin Avenue, Richmond, CA",
-    ROCK: "Rockridge BART Station, College Avenue, Oakland, CA",
-    SBRN: "San Bruno BART Station, Huntington Avenue, San Bruno, CA",
-    SFIA: "San Francisco Int'l Airport BART Station, San Francisco Airport, North Link Road, San Francisco, CA",
-    SANL: "San Leandro BART Station, San Leandro Boulevard, San Leandro, CA",
-    SHAY: "Hayward BART Station, Hayward, CA",
-    SSAN: "South San Francisco BART Station, Mission Road, South San Francisco, CA",
-    UCTY: "Union City BART Station, Union City, CA",
-    WARM: "Warm Springs BART Station, Fremont, CA",
-    WCRK: "Walnut Creek BART Station, Ygnacio Valley Road, Walnut Creek, CA",
-    WDUB: "Dublin/Pleasanton BART Station, Owens Drive, Pleasanton, CA",
-    WOAK: "West Oakland BART Station, 7th Street, Oakland, CA"
+
+    "12TH": "12th St. Oakland City Center BART Station, Broadway, Oakland, CA",
+    "16TH": "16th St. Mission Station, Mission Street, San Francisco, California",
+    "19TH": "19th Street BART station, Broadway, Oakland, CA",
+    "24TH": "24th St Mission BART Station, Mission Street, San Francisco, CA",
+    "ASHB": "Ashby BART Station, Adeline Street, Berkeley, CA",
+    "BALB": "Balboa Park BART Station, Geneva Avenue, San Francisco, CA",
+    "BAYF": "Bay Fair BART Station, Hesperian Boulevard, San Leandro, California",
+    "CAST": "Castro Valley BART Station, Norbridge Avenue, Castro Valley, CA",
+    "CIVC": "Civic Center BART Station, Market St, San Francisco, CA",
+    "COLS": "Coliseum Bart Station, Oakland, CA",
+    "COLM": "Colma BART Station, D St, Colma, CA",
+    "CONS": "Concord BART Station, Oakland Avenue, Concord, CA",
+    "DALY": "Daly City BART Station, Daly City, CA",
+    "DBRK": "Downtown Berkeley BART Station, Shattuck Avenue, Berkeley, CA",
+    "DUBL": "Dublin/Pleasanton BART Station, Owens Drive, Pleasanton, California",
+    "DELN": "El Cerrito del Norte BART Station, Cutting Boulevard, El Cerrito, CA",
+    "PLZA": "El Cerrito Plaza BART Station, Fairmount Avenue, El Cerrito, CA",
+    "EMBR": "Embarcadero BART Station, Market Street, San Francisco, CA",
+    "FRMT": "Fremont BART Station, Bart Way, Fremont, CA",
+    "FTVL": "Fruitvale BART Station, East 12th Street, Oakland, CA",
+    "GLEN": "Glen Park BART Station, Diamond Street, San Francisco, CA",
+    "HAYW": "Hayward BART Station, Hayward, CA",
+    "LAFY": "Lafayette BART Station, Deer Hill Road, Lafayette, CA",
+    "LAKE": "Lake Merritt BART Station, Madison Street, Oakland, CA",
+    "MCAR": "MacArthur BART Station, 40th Street, Oakland, CA",
+    "MLBR": "Millbrae BART Station, Rollins Road, Millbrae, CA",
+    "MONT": "Montgomery St. BART Station, Market Street, San Francisco, CA",
+    "NBRK": "North Berkeley BART Station, Sacramento Street, Berkeley, CA",
+    "NCON": "North Concord/Martinez BART Station, Port Chicago Highway, Concord, CA",
+    "OAKL": "Oakland International Airport (OAK) Station, Oakland, CA 94621",
+    "ORIN": "Orinda BART Station, Camino Pablo, Orinda, CA",
+    "PITT": "Pittsburg/Bay Point BART Station, West Leland Road, Pittsburg, CA",
+    "PHIL": "Pleasant Hill/Contra Costa Centre BART Station, Treat Blvd CA",
+    "POWL": "Powell BART Station, Market Street, San Francisco, CA",
+    "RICH": "Richmond BART Station, Nevin Avenue, Richmond, CA",
+    "ROCK": "Rockridge BART Station, College Avenue, Oakland, CA",
+    "SBRN": "San Bruno BART Station, Huntington Avenue, San Bruno, CA",
+    "SFIA": "San Francisco Int'l Airport BART Station, San Francisco Airport, North Link Road, San Francisco, CA",
+    "SANL": "San Leandro BART Station, San Leandro Boulevard, San Leandro, CA",
+    "SHAY": "Hayward BART Station, Hayward, CA",
+    "SSAN": "South San Francisco BART Station, Mission Road, South San Francisco, CA",
+    "UCTY": "Union City BART Station, Union City, CA",
+    "WARM": "Warm Springs BART Station, Fremont, CA",
+    "WCRK": "Walnut Creek BART Station, Ygnacio Valley Road, Walnut Creek, CA",
+    "WDUB": "Dublin/Pleasanton BART Station, Owens Drive, Pleasanton, CA",
+    "WOAK": "West Oakland BART Station, 7th Street, Oakland, CA"
 }
 
 var route_mapper = {
@@ -67,9 +67,34 @@ var route_mapper = {
 
 var bikes_mapper = {
         [0]: "No bikes allowed",
-        [1]: "Bikes are allowed on all but the first car, unless the cars are very crowded"
+        [1]: "Bikes are allowed"
 }
 
+function populateSelect() {
+    $("#cityName").html('');
+    var buildTheSelectOutput = "";
+    buildTheSelectOutput += '<option value="0" selected> Please select origin station</option>';
+    $.each(stationToLocation_mapper, function (mapperKey, mapperValue) {
+        buildTheSelectOutput += '<option value="' + mapperKey + '">' + mapperValue + '</option>';
+    });
+
+
+    //use the HTML output to show it in the index.html
+    $("#cityName").html(buildTheSelectOutput);
+}
+
+function populateSelectDestination() {
+    $("#cityNameDestination").html('');
+    var buildTheSelectDestinationOutput = "";
+    buildTheSelectDestinationOutput += '<option value="0" selected> Please select a destination</option>';
+    $.each(stationToLocation_mapper, function (mapperKey, mapperValue) {
+        buildTheSelectDestinationOutput += '<option value="' + mapperKey + '">' + mapperValue + '</option>';
+    });
+
+
+    //use the HTML output to show it in the index.html
+    $("#cityNameDestination").html(buildTheSelectDestinationOutput);
+}
 
 // search for running activities
 // local ajax call to the server external api
@@ -101,22 +126,51 @@ function displayScheduleSearchData(dataMatches) {
     var buildTheHtmlOutput = "";
     $.each(dataMatches.schedule.request.trip, function (dataMatchesKey, dataMatchesValue) {
         //create and populate one LI for each of the results
-        //        buildTheHtmlOutput += "<form class='myTrip'>";
-        //        buildTheHtmlOutput += "<select name='originSelector' id='originSelector'>" + stationToLocation_mapper[dataMatchesValue] + "</select>";
-        //        buildTheHtmlOutput += "<select name='destinationSelector' id='destinationSelector'>" + stationToLocation_mapper[dataMatches] + "</select>";
-        //        buildTheHtmlOutput += "<button type='submit' class='myTripButton'>";
-        //        buildTheHtmlOutput += "</button>";
-        //        buildTheHtmlOutput += "</form>";
+
         buildTheHtmlOutput += '<li class="events">';
         buildTheHtmlOutput += "<div class='favorites'>";
         buildTheHtmlOutput += "</div>";
         buildTheHtmlOutput += '<div class="event-description">';
-        buildTheHtmlOutput += '<p>Train: ' + route_mapper[dataMatchesValue.leg['@line']] + '</p>';
-        buildTheHtmlOutput += '<p>Destination: ' + stationToLocation_mapper[dataMatches.destination] + '</p>';
-        buildTheHtmlOutput += '<p>Fare: $' + dataMatchesValue['@fare'] + '</p>';
-        buildTheHtmlOutput += '<p>Estimated Departure Time: ' + dataMatchesValue['@origTimeMin'] + '</p>';
-        buildTheHtmlOutput += '<p>Estimated Arrival Time: ' + dataMatchesValue['@destTimeMin'] + '</p>';
-        buildTheHtmlOutput += '<p>Are bikes allowed? ' + bikes_mapper[dataMatchesValue.leg['@bikeflag']] + '</p>';
+
+
+        buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-play" aria-hidden="true"></i></p>';
+        buildTheHtmlOutput += '<p class="departure">  <i class="fa fa-clock-o" aria-hidden="true"></i> ' + dataMatchesValue['@origTimeMin'] + '</p>';
+        buildTheHtmlOutput += '<p><i class="fa fa-train" aria-hidden="true"></i> ' + stationToLocation_mapper[dataMatches.origin] + '</p>';
+        if (dataMatchesValue.leg.length === 1) {
+            buildTheHtmlOutput += '<p>' + route_mapper[dataMatchesValue.leg['@line']] + ' (' + dataMatchesValue.leg.length + ')</p>';
+            buildTheHtmlOutput += '<p> ' + bikes_mapper[dataMatchesValue.leg['@bikeflag']] + '</p>';
+        } else {
+            $.each(dataMatchesValue.leg, function (legKey, legValue) {
+                if (route_mapper[legValue['@line']] !== undefined) {
+                    buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></p>';
+                    buildTheHtmlOutput += '<p><i class="fa fa-forward" aria-hidden="true"></i> ' + (legKey + 1) + ': ' + route_mapper[legValue['@line']];
+                }
+                if (bikes_mapper[legValue['@bikeflag']] !== undefined) {
+
+                    buildTheHtmlOutput += '<a href="#" class="tooltip">';
+                    buildTheHtmlOutput += ' <i class="fa fa-bicycle" aria-hidden="true"></i>';
+                    buildTheHtmlOutput += '<span>';
+                    buildTheHtmlOutput += '<strong>' + bikes_mapper[legValue['@bikeflag']] + '</strong>';
+                    buildTheHtmlOutput += '</span>';
+                    buildTheHtmlOutput += '</a>';
+
+
+                    console.log(legValue);
+                }
+                if (route_mapper[legValue['@line']] !== undefined) {
+                    buildTheHtmlOutput += '</p>';
+                }
+            });
+        }
+        buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-pause" aria-hidden="true"></i> </p>';
+        buildTheHtmlOutput += '<p class="arrival"> <i class="fa fa-clock-o" aria-hidden="true"></i> ' + dataMatchesValue['@destTimeMin'] + '</p>';
+        buildTheHtmlOutput += '<p><i class="fa fa-train" aria-hidden="true"></i> ' + stationToLocation_mapper[dataMatches.destination] + ' </p>';
+        buildTheHtmlOutput += '<div class="fare"><img class="dollar" src="./images/dollar_icon_green.png">' + dataMatchesValue['@fare'] + '</div>';
+
+
+
+
+
 
 
         //        var linkUrl = dataMatchesValue.registrationUrlAdr;
@@ -149,7 +203,6 @@ function displayScheduleSearchData(dataMatches) {
 
         buildTheHtmlOutput += '</div>';
         buildTheHtmlOutput += '</li>';
-        buildTheHtmlOutput += '<br>';
         console.log(dataMatchesValue);
     });
 
@@ -159,12 +212,11 @@ function displayScheduleSearchData(dataMatches) {
 }
 
 
-// document ready function
-// $(function() {
-//     ajaxScheduleSearch('running');
-
-// });
-
+//document ready function
+$(function () {
+    populateSelect();
+    populateSelectDestination();
+});
 
 // STEP 1 - get the input from the user
 $("#scheduleSearch").submit(function (event) {

@@ -54,16 +54,133 @@ button {
 
 /*general styling*/
 
-/*
 html {
-    background: rgba(0, 0, 0, 0) url("../images/BART_cc_map_20141029.png") no-repeat center center fixed;
-    -webkit-background-size: 100%;
-    -moz-background-size: 100%;
-    -o-background-size: 100%;
-    background-size: 50%;
-    margin: 10px;
+    background: rgba(0, 0, 0, 0) url("../images/background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
-*/
+
+header,
+section {
+    background-image: url("../images/transparent.jpg");
+    border-radius: 0.5rem;
+    padding: 2rem;
+    width: 80%;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+header {
+    text-align: center;
+    font-size: 2.0rem;
+    padding: 1rem;
+}
+
+header .logo {
+    height: 2.0rem;
+}
+
+section {
+    text-align: center;
+}
+
+section ul {
+    list-style: none;
+}
+
+section.display-results .activity-results .events {
+    display: inline-block;
+    width: 47%;
+    border-bottom: 1px solid white;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding-bottom: 2%;
+    margin-bottom: 2%;
+    text-align: left;
+    position: relative;
+}
+
+section.display-results .activity-results p {
+    margin-left: 1.5rem;
+}
+
+section.display-results .activity-results .fa {
+    color: gray;
+}
+
+section.display-results .activity-results .events .arrow-separator {
+    font-size: 17px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: auto;
+    float: left;
+    /* display: inline-block; */
+    clear: left;
+    margin-left: 0;
+}
+
+section.display-results .activity-results .events .arrow-separator .fa {
+    color: white;
+}
+
+section.display-results .activity-results .events .fare {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    border: 1px solid white;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+
+
+/*starting the tooltip css*/
+
+a.tooltip {
+    outline: none;
+}
+
+a.tooltip strong {
+    line-height: 30px;
+}
+
+a.tooltip:hover {
+    text-decoration: none;
+}
+
+a.tooltip span {
+    z-index: 10;
+    display: none;
+    padding: 14px 20px;
+    margin-top: 60px;
+    margin-left: -160px;
+    width: 300px;
+    line-height: 16px;
+}
+
+a.tooltip:hover span {
+    display: inline;
+    position: absolute;
+    border: 2px solid #FFF;
+    color: #000;
+    background: #FFFAF0;
+}
+
+
+/*CSS3 extras*/
+
+a.tooltip span {
+    border-radius: 2px;
+    box-shadow: 0px 0px 8px 4px #666;
+    /*opacity: 0.8;*/
+}
+
+
+/*stopping the tooltip css*/
 
 @media only screen and (max-width: 800px) {
     section.display-results ul li {
@@ -71,9 +188,8 @@ html {
         margin: 0.5rem auto;
         display: block;
     }
-    section.user-input input,
-    section.user-input select {
-        width: 60% !important;
+    section.user-input form.search select.city-name {
+        width: 10 rem;
         margin: 1rem auto;
         display: block;
     }

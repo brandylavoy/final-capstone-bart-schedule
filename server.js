@@ -61,7 +61,7 @@ var getFromBart = function (searchTerm) {
     var emitter = new events.EventEmitter();
     //console.log("inside getFromActive function");
     // These code snippets use an open-source library. http://unirest.io/nodejs
-    unirest.get("https://community-bart.p.mashape.com/sched.aspx?cmd=arrive&dest=ucty&orig=woak&json=y ")
+    unirest.get("https://community-bart.p.mashape.com/sched.aspx?cmd=depart&b=0&a=4&dest=woak&orig=ucty&json=y ")
         .header("X-Mashape-Key", "poOJuuOnJ6mshQZP2u4lJ6vdAISUp1ob0hnjsnif57TGxBXMwj")
         //        .header("Accept", "text/plain")
         .header("Accept", "application/json")
