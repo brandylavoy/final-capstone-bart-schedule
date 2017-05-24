@@ -47,6 +47,17 @@
     font-family: 'Merriweather', serif;
 }
 
+
+/* FONT PATH
+-------------------------- */
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot');
+    font-weight: normal;
+    font-style: normal;
+}
+
 button {
     background-color: transparent;
 }
@@ -92,6 +103,11 @@ section ul {
     list-style: none;
 }
 
+section form select.city-name,
+.city-name-destination {
+    margin: 1rem;
+}
+
 section.display-results .activity-results .events {
     display: inline-block;
     width: 47%;
@@ -130,11 +146,15 @@ section.display-results .activity-results .events .arrow-separator .fa {
 
 section.display-results .activity-results .events .fare {
     position: absolute;
-    top: -10px;
-    right: 10px;
+    top: -12px;
+    right: 12px;
     border: 1px solid white;
     padding: 3px 10px;
     border-radius: 5px;
+}
+
+section.display-results .activity-results .events .fare .fa {
+    color: limegreen;
 }
 
 
@@ -167,7 +187,7 @@ a.tooltip:hover span {
     position: absolute;
     border: 2px solid #FFF;
     color: #000;
-    background: #FFFAF0;
+    background: white;
 }
 
 
@@ -181,6 +201,14 @@ a.tooltip span {
 
 
 /*stopping the tooltip css*/
+
+.deleteFavorite {
+    float: right;
+}
+
+.deleteFavorite i {
+    color: white;
+}
 
 @media only screen and (max-width: 800px) {
     section.display-results ul li {

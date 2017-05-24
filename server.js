@@ -110,10 +110,10 @@ app.post('/add-to-favorites', function (req, res) {
 
     //db connection and data queries
     schedule.create({
-        name: req.body.name,
-        date: req.body.date,
-        place: req.body.place,
-        url: req.body.url
+        origin: req.body.origin,
+        destination: req.body.destination,
+//        place: req.body.place,
+//        url: req.body.url
     }, function (err, item) {
         if (err) {
             return res.status(500).json({

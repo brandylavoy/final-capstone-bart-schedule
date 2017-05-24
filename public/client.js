@@ -123,16 +123,21 @@ function ajaxScheduleSearch(searchTerm) {
 function displayScheduleSearchData(dataMatches) {
     console.log(dataMatches);
     //create an empty variable to store one LI for each of the results
-    var buildTheHtmlOutput = "";
+    var buildTheHtmlOutput = '';
     $.each(dataMatches.schedule.request.trip, function (dataMatchesKey, dataMatchesValue) {
         //create and populate one LI for each of the results
-
         buildTheHtmlOutput += '<li class="events">';
-        buildTheHtmlOutput += "<div class='favorites'>";
-        buildTheHtmlOutput += "</div>";
+        buildTheHtmlOutput += '<div class="favorites">';
+        buildTheHtmlOutput += '<form class="addToFavorites">';
+        buildTheHtmlOutput += '<input type="hidden" class="addToFavoritesOrigin" value="' + stationToLocation_mapper[dataMatches.origin] + '">';
+        buildTheHtmlOutput += '<input type="hidden" class="addToFavoritesDestination" value="' + stationToLocation_mapper[dataMatches.destination] + '">';
+        buildTheHtmlOutput += '<button type="submit" class="addToFavoritesButton">';
+        buildTheHtmlOutput += '<i class="fa fa-heart" aria-hidden="true"></i>';
+        buildTheHtmlOutput += '</button>';
+        buildTheHtmlOutput += '</form>';
+        buildTheHtmlOutput += '</div>';
+        buildTheHtmlOutput += '</div>';
         buildTheHtmlOutput += '<div class="event-description">';
-
-
         buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-play" aria-hidden="true"></i></p>';
         buildTheHtmlOutput += '<p class="departure">  <i class="fa fa-clock-o" aria-hidden="true"></i> ' + dataMatchesValue['@origTimeMin'] + '</p>';
         buildTheHtmlOutput += '<p><i class="fa fa-train" aria-hidden="true"></i> ' + stationToLocation_mapper[dataMatches.origin] + '</p>';
@@ -146,15 +151,12 @@ function displayScheduleSearchData(dataMatches) {
                     buildTheHtmlOutput += '<p><i class="fa fa-forward" aria-hidden="true"></i> ' + (legKey + 1) + ': ' + route_mapper[legValue['@line']];
                 }
                 if (bikes_mapper[legValue['@bikeflag']] !== undefined) {
-
                     buildTheHtmlOutput += '<a href="#" class="tooltip">';
-                    buildTheHtmlOutput += ' <i class="fa fa-bicycle" aria-hidden="true"></i>';
+                    buildTheHtmlOutput += '  <i class="fa fa-bicycle" aria-hidden="true"></i>';
                     buildTheHtmlOutput += '<span>';
                     buildTheHtmlOutput += '<strong>' + bikes_mapper[legValue['@bikeflag']] + '</strong>';
                     buildTheHtmlOutput += '</span>';
                     buildTheHtmlOutput += '</a>';
-
-
                     console.log(legValue);
                 }
                 if (route_mapper[legValue['@line']] !== undefined) {
@@ -165,50 +167,16 @@ function displayScheduleSearchData(dataMatches) {
         buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-pause" aria-hidden="true"></i> </p>';
         buildTheHtmlOutput += '<p class="arrival"> <i class="fa fa-clock-o" aria-hidden="true"></i> ' + dataMatchesValue['@destTimeMin'] + '</p>';
         buildTheHtmlOutput += '<p><i class="fa fa-train" aria-hidden="true"></i> ' + stationToLocation_mapper[dataMatches.destination] + ' </p>';
-        buildTheHtmlOutput += '<div class="fare"><img class="dollar" src="./images/dollar_icon_green.png">' + dataMatchesValue['@fare'] + '</div>';
+        buildTheHtmlOutput += '<div class="fare"><i class="fa fa-usd" aria-hidden="true"></i>' + dataMatchesValue['@fare'] + '</div>';
 
-
-
-
-
-
-
-        //        var linkUrl = dataMatchesValue.registrationUrlAdr;
-        //        if (linkUrl === undefined) {
-        //            buildTheHtmlOutput += '<h4><a target="_blank" href="www.Schedule.com"' + dataMatchesValue.assetName + '</a></h4>';
-        //        }
-        //        else {
-        //            buildTheHtmlOutput += '<h4><a target="_blank" href="' + dataMatchesValue.registrationUrlAdr + '" >' + dataMatchesValue.assetName + '</a></h4>';
-        //        }
-
-        //        var showDistance = dataMatchesValue.assetAttributes[0];
-        //        if (showDistance === undefined) {
-        //            buildTheHtmlOutput += "";
-        //        }
-        //        else {
-        //            buildTheHtmlOutput += '<p>' + dataMatchesValue.assetAttributes[0].attribute.attributeValue + '</p>';
-        //        }
-
-        //        buildTheHtmlOutput += '<p>' + dataMatchesValue.place.cityName + '</p>';
-        //
-        //        buildTheHtmlOutput += '<p>' + new Date(utcDate) + '</p>';
-        //
-        //        var showDescription = dataMatchesValue.assetDescriptions[0];
-        //        if (showDescription === undefined) {
-        //            buildTheHtmlOutput += "";
-        //        }
-        //        else {
-        //            buildTheHtmlOutput += "<div class='auto-populated-description'>" + dataMatchesValue.assetDescriptions[0].description + "</div>";
-        //        }
 
         buildTheHtmlOutput += '</div>';
         buildTheHtmlOutput += '</li>';
         console.log(dataMatchesValue);
     });
-
-
     //use the HTML output to show it in the index.html
-    $(".activity-results").html(buildTheHtmlOutput);
+    $('.activity-results').html(buildTheHtmlOutput);
+
 }
 
 
@@ -218,17 +186,55 @@ $(function () {
     populateSelectDestination();
 });
 
+// add activity to favorites section
+$(document).on('click', '.activity-results .addToFavoritesButton', function (event) {
+
+
+    //if the page refreshes when you submit the form use "preventDefault()" to force JavaScript to handle the form submission
+    event.preventDefault();
+
+    //get the value from the input box
+    $(this).toggleClass("highlight");
+
+
+    var addToFavoritesOrigin = $(this).parent().find('.addToFavoritesOrigin').val();
+    var addToFavoritesDestination = $(this).parent().find('.addToFavoritesDestination').val();
+    //    var favoritesUrlValue = $(this).parent().find('.addToFavoritesUrlValue').val();
+
+    var nameObject = {
+        'origin': addToFavoritesOrigin,
+        'destination': addToFavoritesDestination
+    };
+
+    $.ajax({
+            method: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(nameObject),
+            url: '/add-to-favorites/',
+        })
+        .done(function (result) {
+
+            populateFavoritesContainer();
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+});
+
+
+
 // STEP 1 - get the input from the user
 $("#scheduleSearch").submit(function (event) {
     //if the page refreshes when you submit the form use "preventDefault()" to force JavaScript to handle the form submission
     event.preventDefault();
     //get the value from the input box
-
-
     var userInput = $("#cityName").val();
 
-    if (userInput === "") {
-        alert("Sorry that search did not yeild any results. Please enter a city and state and try your search again.");
+    if (userInput === '') {
+        alert("Sorry that search did not yeild any results. Please select an origin station, and a destination station and try your search again.");
     } else {
         // console.log(userInput);
         ajaxScheduleSearch(userInput);
@@ -250,32 +256,28 @@ function populateFavoritesContainer() {
             dataType: 'json',
         })
         .done(function (dataOutput) {
-            // console.log(dataOutput);
+            console.log(dataOutput);
             //If successful, set some globals instead of using result object
 
             var buildTheHtmlOutput = "";
 
             $.each(dataOutput, function (dataOutputKey, dataOutputValue) {
 
-                buildTheHtmlOutput += "<li class='favorites'>";
-                buildTheHtmlOutput += "<div class='deleteFavorite'>";
-                buildTheHtmlOutput += "<form class='deleteFavoriteValue'>";
-                buildTheHtmlOutput += "<input type='hidden' class='deleteFavoriteValueInput' value='" + dataOutputValue._id + "'>";
-                buildTheHtmlOutput += "<button type='submit' class='deleteFavoriteButton'>";
-                buildTheHtmlOutput += "<img src='/images/delete_icon.png' class='delete-favorite-icon'>";
-                buildTheHtmlOutput += "</button>";
-                buildTheHtmlOutput += "</form>";
-                buildTheHtmlOutput += "</div>";
-                buildTheHtmlOutput += '<h4><a target="_blank" href="' + dataOutputValue.url + '" >' + dataOutputValue.name + '</a></h4>';
-                var showCity = dataOutputValue.place;
-                if (showCity === undefined) {
-                    buildTheHtmlOutput += "";
-                } else {
-                    buildTheHtmlOutput += '<p>' + dataOutputValue.place + '</p>';
-                }
-                buildTheHtmlOutput += '<p>' + dataOutputValue.date + '</p>';
-                buildTheHtmlOutput += "</li>";
-                // console.log(dataOutput);
+                buildTheHtmlOutput += '<li class="favorites">';
+                buildTheHtmlOutput += '<div class="deleteFavorite">';
+                buildTheHtmlOutput += '<form class="deleteFavoriteValue">';
+                buildTheHtmlOutput += '<input type="hidden" class="deleteFavoriteValueInput " value="' + dataOutputValue._id + '">';
+                buildTheHtmlOutput += '<input type="hidden" class="addToFavoritesOrigin" value="' + dataOutputValue.origin + '">';
+                buildTheHtmlOutput += '<input type="hidden" class="addToFavoritesDestination" value="' + dataOutputValue.destination + '">';
+
+                buildTheHtmlOutput += '<button type="submit" class="deleteFavoriteButton">';
+                buildTheHtmlOutput += '<p><i class="fa fa-trash-o" aria-hidden="true"></i></p>';
+                buildTheHtmlOutput += '</button>';
+                buildTheHtmlOutput += '</form>';
+                buildTheHtmlOutput += '</div>';
+                buildTheHtmlOutput += '<p><i class="fa fa-train" aria-hidden="true"></i> ' + dataOutputValue.origin + ' --> ' + dataOutputValue.destination + '</p>';
+                buildTheHtmlOutput += '</li>';
+                //                console.log(dataOutput);
             });
             $(".favoritesContainer").html(buildTheHtmlOutput);
         })
