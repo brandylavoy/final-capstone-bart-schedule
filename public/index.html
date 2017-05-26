@@ -15,21 +15,19 @@
             <img src="images/Bart-logo.svg" class="logo"> Where will BART take you today?
         </h1>
     </header>
+    <section class="welcome" id="welcome">
+        <h1>Click the map to search the BART schedule</h1>
+
+        <!--       click this button to show the search form-->
+        <button id="startSearchButton" type="submit"><img src="images/BART_cc_map_20141029.png" class="map" id="map"></button>
+    </section>
     <section class="user-input" id="userInput">
         <form id="scheduleSearch" class="search">
-            <select name="cityName" id="cityName" class="city-name">
-                <option value="volvo"></option>
-                <option value="saab"></option>
-                <option value="mercedes"></option>
-                <option value="audi"></option>
+            <select name="cityNameOrigin" id="cityNameOrigin" class="city-name-origin">
             </select>
 
 
-            <select name=" cityNameDestination" id="cityNameDestination" class="city-name-destination">
-                <option value="volvo"></option>
-                <option value="saab"></option>
-                <option value="mercedes"></option>
-                <option value="audi"></option>
+            <select name="cityNameDestination" id="cityNameDestination" class="city-name-destination">
             </select>
             <input id="searchButton" type="submit" value="Submit" class="search-button" />
 
@@ -37,7 +35,7 @@
         </form>
     </section>
 
-    <section class="display-results">
+    <section class="display-results" id="displayResults">
         <ul class="activity-results">
         </ul>
     </section>
@@ -51,7 +49,7 @@
 
 
     <footer class="contact">
-        <h6>Created by Brandy La Voy</h6>
+        <!--      <h6>Created by Brandy La Voy</h6>-->
     </footer>
 
 

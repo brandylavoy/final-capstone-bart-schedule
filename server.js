@@ -57,11 +57,11 @@ if (require.main === module) {
 //    return emitter;
 //};
 
-var getFromBart = function (searchTerm) {
+var getFromBart = function (cityNameOrigin, cityNameDestination) {
     var emitter = new events.EventEmitter();
     //console.log("inside getFromActive function");
     // These code snippets use an open-source library. http://unirest.io/nodejs
-    unirest.get("https://community-bart.p.mashape.com/sched.aspx?cmd=depart&b=0&a=4&dest=woak&orig=ucty&json=y ")
+    unirest.get("https://community-bart.p.mashape.com/sched.aspx?cmd=depart&b=0&a=4&dest=" + cityNameDestination + "&orig=" + cityNameOrigin + "&json=y ")
         .header("X-Mashape-Key", "poOJuuOnJ6mshQZP2u4lJ6vdAISUp1ob0hnjsnif57TGxBXMwj")
         //        .header("Accept", "text/plain")
         .header("Accept", "application/json")
@@ -84,12 +84,12 @@ var getFromBart = function (searchTerm) {
 
 
 // local API endpoints
-app.get('/schedule/:name', function (req, res) {
+app.get('/schedule/:cityNameOrigin/:cityNameDestination', function (req, res) {
 
 
     //    external api function call and response
 
-    var searchReq = getFromBart(req.params.name);
+    var searchReq = getFromBart(req.params.cityNameOrigin, req.params.cityNameDestination);
 
     //get the data from the first api call
     searchReq.on('end', function (item) {
@@ -112,8 +112,8 @@ app.post('/add-to-favorites', function (req, res) {
     schedule.create({
         origin: req.body.origin,
         destination: req.body.destination,
-//        place: req.body.place,
-//        url: req.body.url
+        //        place: req.body.place,
+        //        url: req.body.url
     }, function (err, item) {
         if (err) {
             return res.status(500).json({

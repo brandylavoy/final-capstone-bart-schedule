@@ -99,13 +99,32 @@ section {
     text-align: center;
 }
 
+section form input.search-button {
+    display: block;
+    text-align: center;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+button#startSearchButton .map {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin: 1rem;
+    border-radius: 10px;
+}
+
 section ul {
     list-style: none;
 }
 
-section form select.city-name,
-.city-name-destination {
+section form select.city-name-origin,
+section form select.city-name-destination {
     margin: 1rem;
+    width: 85%;
+    height: 1.5rem;
 }
 
 section.display-results .activity-results .events {
@@ -120,12 +139,31 @@ section.display-results .activity-results .events {
     position: relative;
 }
 
+section.display-results .map {
+    width: 80%;
+    margin: 2rem auto;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+section.display-results .activity-results .fa#heart {
+    color: green;
+}
+
 section.display-results .activity-results p {
     margin-left: 1.5rem;
 }
 
 section.display-results .activity-results .fa {
     color: gray;
+}
+
+.highlight i {
+    color: #0A96D4 !important;
+    border-radius: 5px;
+    padding: 0.2rem;
 }
 
 section.display-results .activity-results .events .arrow-separator {
@@ -154,7 +192,7 @@ section.display-results .activity-results .events .fare {
 }
 
 section.display-results .activity-results .events .fare .fa {
-    color: limegreen;
+    color: #FECA33;
 }
 
 
@@ -211,24 +249,22 @@ a.tooltip span {
 }
 
 @media only screen and (max-width: 800px) {
-    section.display-results ul li {
-        width: 60%;
-        margin: 0.5rem auto;
-        display: block;
-    }
-    section.user-input form.search select.city-name {
-        width: 10 rem;
-        margin: 1rem auto;
-        display: block;
-    }
-    .display-results .activity-results .events {
+    section.display-results .activity-results .events {
         width: 100%;
         margin: 0.5rem auto;
         display: block;
     }
-    .dashboard .favoritesContainer .favorites {
-        width: 100%;
-        margin: 0.5rem auto;
+    section.display-results .activity-results .events .fare {
+        position: absolute;
+        top: 0px;
+        right: 12px;
+        border: 1px solid white;
+        padding: 3px 10px;
+        border-radius: 5px;
+    }
+    section.display-results .activity-results p {
         display: block;
+        margin: 0 auto;
+        margin-left: 1.5rem;
     }
 }

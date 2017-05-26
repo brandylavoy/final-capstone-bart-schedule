@@ -71,7 +71,7 @@ var bikes_mapper = {
 }
 
 function populateSelect() {
-    $("#cityName").html('');
+    $("#cityNameOrigin").html('');
     var buildTheSelectOutput = "";
     buildTheSelectOutput += '<option value="0" selected> Please select origin station</option>';
     $.each(stationToLocation_mapper, function (mapperKey, mapperValue) {
@@ -80,7 +80,7 @@ function populateSelect() {
 
 
     //use the HTML output to show it in the index.html
-    $("#cityName").html(buildTheSelectOutput);
+    $("#cityNameOrigin").html(buildTheSelectOutput);
 }
 
 function populateSelectDestination() {
@@ -99,11 +99,11 @@ function populateSelectDestination() {
 // search for running activities
 // local ajax call to the server external api
 
-function ajaxScheduleSearch(searchTerm) {
+function ajaxScheduleSearch(cityNameOrigin, cityNameDestination) {
 
     $.ajax({
             type: "GET",
-            url: "/schedule/" + searchTerm,
+            url: "/schedule/" + cityNameOrigin + "/" + cityNameDestination,
             dataType: 'json',
         })
         .done(function (dataOutput) {
@@ -123,7 +123,8 @@ function ajaxScheduleSearch(searchTerm) {
 function displayScheduleSearchData(dataMatches) {
     console.log(dataMatches);
     //create an empty variable to store one LI for each of the results
-    var buildTheHtmlOutput = '';
+
+    var buildTheHtmlOutput = '<ul class="activity-results">';
     $.each(dataMatches.schedule.request.trip, function (dataMatchesKey, dataMatchesValue) {
         //create and populate one LI for each of the results
         buildTheHtmlOutput += '<li class="events">';
@@ -131,8 +132,8 @@ function displayScheduleSearchData(dataMatches) {
         buildTheHtmlOutput += '<form class="addToFavorites">';
         buildTheHtmlOutput += '<input type="hidden" class="addToFavoritesOrigin" value="' + stationToLocation_mapper[dataMatches.origin] + '">';
         buildTheHtmlOutput += '<input type="hidden" class="addToFavoritesDestination" value="' + stationToLocation_mapper[dataMatches.destination] + '">';
-        buildTheHtmlOutput += '<button type="submit" class="addToFavoritesButton">';
-        buildTheHtmlOutput += '<i class="fa fa-heart" aria-hidden="true"></i>';
+        buildTheHtmlOutput += '<button type="submit" class="addToFavoritesButton" id="addToFavoritesButton">';
+        buildTheHtmlOutput += '<i class="fa fa-heart" aria-hidden="true" id="heart"></i>';
         buildTheHtmlOutput += '</button>';
         buildTheHtmlOutput += '</form>';
         buildTheHtmlOutput += '</div>';
@@ -174,76 +175,13 @@ function displayScheduleSearchData(dataMatches) {
         buildTheHtmlOutput += '</li>';
         console.log(dataMatchesValue);
     });
+    buildTheHtmlOutput += '<img src="images/BART_cc_map_20141029.png" class="map" id="map">';
+    buildTheHtmlOutput += '</ul>';
     //use the HTML output to show it in the index.html
-    $('.activity-results').html(buildTheHtmlOutput);
+    $('.display-results').html(buildTheHtmlOutput);
 
 }
 
-
-//document ready function
-$(function () {
-    populateSelect();
-    populateSelectDestination();
-});
-
-// add activity to favorites section
-$(document).on('click', '.activity-results .addToFavoritesButton', function (event) {
-
-
-    //if the page refreshes when you submit the form use "preventDefault()" to force JavaScript to handle the form submission
-    event.preventDefault();
-
-    //get the value from the input box
-    $(this).toggleClass("highlight");
-
-
-    var addToFavoritesOrigin = $(this).parent().find('.addToFavoritesOrigin').val();
-    var addToFavoritesDestination = $(this).parent().find('.addToFavoritesDestination').val();
-    //    var favoritesUrlValue = $(this).parent().find('.addToFavoritesUrlValue').val();
-
-    var nameObject = {
-        'origin': addToFavoritesOrigin,
-        'destination': addToFavoritesDestination
-    };
-
-    $.ajax({
-            method: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: JSON.stringify(nameObject),
-            url: '/add-to-favorites/',
-        })
-        .done(function (result) {
-
-            populateFavoritesContainer();
-        })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
-});
-
-
-
-// STEP 1 - get the input from the user
-$("#scheduleSearch").submit(function (event) {
-    //if the page refreshes when you submit the form use "preventDefault()" to force JavaScript to handle the form submission
-    event.preventDefault();
-    //get the value from the input box
-    var userInput = $("#cityName").val();
-
-    if (userInput === '') {
-        alert("Sorry that search did not yeild any results. Please select an origin station, and a destination station and try your search again.");
-    } else {
-        // console.log(userInput);
-        ajaxScheduleSearch(userInput);
-    }
-    //use that value to call the getResults function defined bellow
-
-
-
-});
 
 
 //populate favorites container
@@ -286,16 +224,101 @@ function populateFavoritesContainer() {
             console.log(error);
             console.log(errorThrown);
         });
-
-
 }
 
-
+//document ready function
 $(function () {
     populateFavoritesContainer();
 
+    $('#welcome').show();
+    $('#userInput').hide();
+    $('#displayResults').hide();
+    $('#dashboard').hide();
+
+    populateSelect();
+    populateSelectDestination();
+
+    //on start quiz
+    $('#startSearchButton').on('click', function () {
+        $('#welcome').hide();
+        $('#dashboard').hide();
+        $('#userInput').show();
+        $('#displayResults').hide();
+
+    });
+
+    $('#searchButton').on('click', function () {
+        $('#welcome').hide();
+        $('#dashboard').show();
+        $('#userInput').show();
+        $('#displayResults').show();
+
+    });
 });
 
+
+
+
+// STEP 1 - get the input from the user
+$("#scheduleSearch").submit(function (event) {
+    //if the page refreshes when you submit the form use "preventDefault()" to force JavaScript to handle the form submission
+    event.preventDefault();
+    //get the value from the input box
+    var cityNameOrigin = $("#cityNameOrigin").val();
+    var cityNameDestination = $("#cityNameDestination").val();
+    console.log(cityNameOrigin, cityNameDestination);
+
+    if ((cityNameOrigin == 0) || (cityNameDestination == 0)) {
+        alert("Sorry that search did not yeild any results. Please select an origin station, and a destination station and try your search again.");
+    } else {
+        // console.log(userInput);
+        ajaxScheduleSearch(cityNameOrigin, cityNameDestination);
+    }
+    //use that value to call the getResults function defined bellow
+
+});
+
+
+
+
+
+// add activity to favorites section
+$(document).on('click', '.activity-results .addToFavoritesButton', function (event) {
+
+
+    //if the page refreshes when you submit the form use "preventDefault()" to force JavaScript to handle the form submission
+    event.preventDefault();
+
+    //get the value from the input box
+    $(this).toggleClass("highlight");
+
+
+    var addToFavoritesOrigin = $(this).parent().find('.addToFavoritesOrigin').val();
+    var addToFavoritesDestination = $(this).parent().find('.addToFavoritesDestination').val();
+    //    var favoritesUrlValue = $(this).parent().find('.addToFavoritesUrlValue').val();
+
+    var nameObject = {
+        'origin': addToFavoritesOrigin,
+        'destination': addToFavoritesDestination
+    };
+
+    $.ajax({
+            method: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            data: JSON.stringify(nameObject),
+            url: '/add-to-favorites/',
+        })
+        .done(function (result) {
+
+            populateFavoritesContainer();
+        })
+        .fail(function (jqXHR, error, errorThrown) {
+            console.log(jqXHR);
+            console.log(error);
+            console.log(errorThrown);
+        });
+});
 
 
 // add Schedule to favorites section
