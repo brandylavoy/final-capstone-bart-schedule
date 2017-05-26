@@ -66,7 +66,7 @@ button {
 /*general styling*/
 
 html {
-    background: rgba(0, 0, 0, 0) url("../images/background.jpg") no-repeat center center fixed;
+    background: rgba(0, 0, 0, 0) url("../assets/images/background.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -75,7 +75,7 @@ html {
 
 header,
 section {
-    background-image: url("../images/transparent.jpg");
+    background-image: url("../assets/images/transparent.jpg");
     border-radius: 0.5rem;
     padding: 2rem;
     width: 80%;

@@ -175,7 +175,7 @@ function displayScheduleSearchData(dataMatches) {
         buildTheHtmlOutput += '</li>';
         console.log(dataMatchesValue);
     });
-    buildTheHtmlOutput += '<img src="images/BART_cc_map_20141029.png" class="map" id="map">';
+    buildTheHtmlOutput += '<img src="assets/images/BART_cc_map_20141029.png" class="map" id="map">';
     buildTheHtmlOutput += '</ul>';
     //use the HTML output to show it in the index.html
     $('.display-results').html(buildTheHtmlOutput);
