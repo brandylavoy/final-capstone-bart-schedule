@@ -7,7 +7,7 @@ var config = require('./config');
 var app = express();
 var schedule = require('./models/schedule');
 app.use(bodyParser.json());
-app.use(express.static('public'));
+app.use(express.static('build'));
 
 
 var stationsArray = [

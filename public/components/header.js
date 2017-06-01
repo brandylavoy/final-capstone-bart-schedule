@@ -1,9 +1,16 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 
 export default function Header() {
-    return (
-        <h1>
-        <img src="assets/images/Bart-logo.svg" class="logo"> Where will BART take you today?
-        </h1>
-    );
+    const welcome = 'Where will BART take you today'
+    const logo = 'assets/images/Bart-logo.svg';
+
+        return (
+            <header className="reactHeader">
+            <h1 className="welcome"/>
+                <img className="logo" src={logo} />
+
+            </header>
+
+        );
 }

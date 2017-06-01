@@ -1,7 +1,7 @@
 {
     "name": "final-capstone-bart-schedule",
     "version": "1.0.0",
-    "description": "",
+    "description": "BART Schedule search",
     "main": "server.js",
     "directories": {
         "test": "tests"

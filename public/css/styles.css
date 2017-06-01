@@ -1,0 +1,271 @@
+/*css resets*/
+
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    text-decoration: none;
+    /*The box-sizing property is used to tell the browser what the sizing properties (width and height) should include border-box.*/
+    box-sizing: border-box;
+    /*reset Chrome user agent styles*/
+    -webkit-margin-before: 0px;
+    -webkit-margin-after: 0px;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-before: 0px;
+    -webkit-padding-after: 0px;
+    -webkit-padding-start: 0px;
+    -webkit-padding-end: 0px;
+    /*reset Firefox user agent styles*/
+    -moz-margin-before: 0px;
+    -moz-margin-after: 0px;
+    -moz-margin-start: 0px;
+    -moz-margin-end: 0px;
+    -moz-padding-before: 0px;
+    -moz-padding-after: 0px;
+    -moz-padding-start: 0px;
+    -moz-padding-end: 0px;
+    /*reset Internet Explorer user agent styles*/
+    -ms-margin-before: 0px;
+    -ms-margin-after: 0px;
+    -ms-margin-start: 0px;
+    -ms-margin-end: 0px;
+    -ms-padding-before: 0px;
+    -ms-padding-after: 0px;
+    -ms-padding-start: 0px;
+    -ms-padding-end: 0px;
+    /*reset Opera user agent styles*/
+    -o-margin-before: 0px;
+    -o-margin-after: 0px;
+    -o-margin-start: 0px;
+    -o-margin-end: 0px;
+    -o-padding-before: 0px;
+    -o-padding-after: 0px;
+    -o-padding-start: 0px;
+    -o-padding-end: 0px;
+    font-family: 'Merriweather', serif;
+}
+
+
+/* FONT PATH
+-------------------------- */
+
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/fonts/fontawesome-webfont.eot');
+    font-weight: normal;
+    font-style: normal;
+}
+
+button {
+    background-color: transparent;
+}
+
+
+/*general styling*/
+
+html {
+    background: rgba(0, 0, 0, 0) url("../assets/images/background.jpg") no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+header,
+section {
+    background-image: url("../assets/images/transparent.jpg");
+    border-radius: 0.5rem;
+    padding: 2rem;
+    width: 80%;
+    margin-bottom: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+header {
+    text-align: center;
+    font-size: 2.0rem;
+    padding: 1rem;
+}
+
+header .logo {
+    height: 2.0rem;
+}
+
+section {
+    text-align: center;
+}
+
+section form input.search-button {
+    display: block;
+    text-align: center;
+    margin: 1rem auto;
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: none;
+}
+
+button#startSearchButton .map {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    margin: 1rem;
+    border-radius: 10px;
+}
+
+section ul {
+    list-style: none;
+}
+
+section form select.city-name-origin,
+section form select.city-name-destination {
+    margin: 1rem;
+    width: 85%;
+    height: 1.5rem;
+}
+
+section.display-results .activity-results .events {
+    display: inline-block;
+    width: 47%;
+    border-bottom: 1px solid white;
+    margin-left: 1%;
+    margin-right: 1%;
+    padding-bottom: 2%;
+    margin-bottom: 2%;
+    text-align: left;
+    position: relative;
+}
+
+section.display-results .map {
+    width: 80%;
+    margin: 2rem auto;
+    border-radius: 10px;
+    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+}
+
+section.display-results .activity-results .fa#heart {
+    color: green;
+}
+
+section.display-results .activity-results p {
+    margin-left: 1.5rem;
+}
+
+section.display-results .activity-results .fa {
+    color: gray;
+}
+
+.highlight i {
+    color: #0A96D4 !important;
+    border-radius: 5px;
+    padding: 0.2rem;
+}
+
+section.display-results .activity-results .events .arrow-separator {
+    font-size: 17px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    width: auto;
+    float: left;
+    /* display: inline-block; */
+    clear: left;
+    margin-left: 0;
+}
+
+section.display-results .activity-results .events .arrow-separator .fa {
+    color: white;
+}
+
+section.display-results .activity-results .events .fare {
+    position: absolute;
+    top: -12px;
+    right: 12px;
+    border: 1px solid white;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+
+section.display-results .activity-results .events .fare .fa {
+    color: #FECA33;
+}
+
+
+/*starting the tooltip css*/
+
+a.tooltip {
+    outline: none;
+}
+
+a.tooltip strong {
+    line-height: 30px;
+}
+
+a.tooltip:hover {
+    text-decoration: none;
+}
+
+a.tooltip span {
+    z-index: 10;
+    display: none;
+    padding: 14px 20px;
+    margin-top: 60px;
+    margin-left: -160px;
+    width: 300px;
+    line-height: 16px;
+}
+
+a.tooltip:hover span {
+    display: inline;
+    position: absolute;
+    border: 2px solid #FFF;
+    color: #000;
+    background: white;
+}
+
+
+/*CSS3 extras*/
+
+a.tooltip span {
+    border-radius: 2px;
+    box-shadow: 0px 0px 8px 4px #666;
+    /*opacity: 0.8;*/
+}
+
+
+/*stopping the tooltip css*/
+
+.deleteFavorite {
+    float: right;
+}
+
+.deleteFavorite i {
+    color: white;
+}
+
+@media only screen and (max-width: 800px) {
+    section.display-results .activity-results .events {
+        width: 100%;
+        margin: 0.5rem auto;
+        display: block;
+    }
+    section.display-results .activity-results .events .fare {
+        position: absolute;
+        top: 0px;
+        right: 12px;
+        border: 1px solid white;
+        padding: 3px 10px;
+        border-radius: 5px;
+    }
+    section.display-results .activity-results p {
+        display: block;
+        margin: 0 auto;
+        margin-left: 1.5rem;
+    }
+}
