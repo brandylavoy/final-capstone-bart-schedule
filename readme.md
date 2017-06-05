@@ -1,19 +1,19 @@
 # BART (Bay Area Rapid Transit) API schedule search
 Thinkful (https://www.thinkful.com) Final Capstone Project - Full Stack app integrating with *BART.gov*'s API
 
-![landing page](https://brandylavoy.github.io/final-capstone-bart-schedule/git_hub_images/landing-page-no-results.png)
+![landing page](https://github.com/brandylavoy/final-capstone-bart-schedule/blob/master/git_hub_images/landing-page-no-results.png)
 
 
-![search box with no results](https://brandylavoy.github.io/final-capstone-bart-schedule/git_hub_images/origin-destination-drop-down-selectors-no-results.png)
+![search box with no results](https://github.com/brandylavoy/final-capstone-bart-schedule/blob/master/git_hub_images/origin-destination-drop-down-selectors-no-results.png)
 
 
-![schedule search results showing](https://brandylavoy.github.io/final-capstone-bart-schedule/git_hub_images/search-results-returned-no-favorites.png)
+![schedule search results showing](https://github.com/brandylavoy/final-capstone-bart-schedule/blob/master/git_hub_images/search-results-returned-no-favorites.png)
 
 
-![schedule search results with one favorite](https://brandylavoy.github.io/final-capstone-bart-schedule/git_hub_images/search-results-one-selected-to-add-to-favoirtes-container.png)
+![schedule search results with one favorite](https://github.com/brandylavoy/final-capstone-bart-schedule/blob/master/git_hub_images/search-results-one-selected-to-add-to-favoirtes-container.png)
 
 
-![favorites container with three routes favorited](https://brandylavoy.github.io/final-capstone-bart-schedule/git_hub_images/favorites-container-with-three-favorites.png)
+![favorites container with three routes favorited](https://github.com/brandylavoy/final-capstone-bart-schedule/blob/master/git_hub_images/favorites-container-with-three-favorites.png)
 
 ## Background
 
