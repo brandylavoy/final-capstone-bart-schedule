@@ -213,7 +213,7 @@ function populateFavoritesContainer() {
                 buildTheHtmlOutput += '</button>';
                 buildTheHtmlOutput += '</form>';
                 buildTheHtmlOutput += '</div>';
-                buildTheHtmlOutput += '<p><i class="fa fa-train" aria-hidden="true"></i> ' + dataOutputValue.origin + ' --> ' + dataOutputValue.destination + '</p>';
+                buildTheHtmlOutput += '<p class="favorites-origin"><i class="fa fa-play" aria-hidden="true"></i> ' + dataOutputValue.origin + '</p> <p class="favorites-destination"><i class="fa fa-pause" aria-hidden="true"></i> ' + dataOutputValue.destination + '</p>';
                 buildTheHtmlOutput += '</li>';
                 //                console.log(dataOutput);
             });

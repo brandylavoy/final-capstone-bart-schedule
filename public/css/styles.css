@@ -94,6 +94,7 @@ header {
 
 header .logo {
     height: 2.0rem;
+    padding-right: 1rem;
 }
 
 section {
@@ -150,7 +151,9 @@ section.display-results .map {
 }
 
 section.display-results .activity-results .fa#heart {
-    color: green;
+    color: #0A96D4;
+    font-size: 1.5rem;
+
 }
 
 section.display-results .activity-results p {
@@ -162,9 +165,8 @@ section.display-results .activity-results .fa {
 }
 
 .highlight i {
-    color: #0A96D4 !important;
+    color: #CE2700 !important;
     border-radius: 5px;
-    padding: 0.2rem;
 }
 
 section.display-results .activity-results .events .arrow-separator {
@@ -195,7 +197,6 @@ section.display-results .activity-results .events .fare {
 section.display-results .activity-results .events .fare .fa {
     color: #FECA33;
 }
-
 
 /*starting the tooltip css*/
 
@@ -241,15 +242,38 @@ a.tooltip span {
 
 /*stopping the tooltip css*/
 
+.dashboard h3{
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.favoritesContainer .favorites {
+    text-align: left;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid white;
+    margin-bottom: 1rem;
+}
+
+.favoritesContainer .favorites .favorites-destination{
+    margin-left: 2rem;
+
+
+}
 .deleteFavorite {
     float: right;
 }
 
 .deleteFavorite i {
-    color: white;
+    color: #FF8062;
+    font-size: 1.5rem;
 }
 
 @media only screen and (max-width: 800px) {
+    header {
+        font-size: 1.0rem;
+        padding: 0.5rem;
+    }
+
     section.display-results .activity-results .events {
         width: 100%;
         margin: 0.5rem auto;
