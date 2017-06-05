@@ -27,7 +27,7 @@ This app gives people in the Bay Area access to the BART schedule, the search pr
 
 The initial mobile and desktop wireframes can be seen below:
 
-![Initial Wireframe](https://brandylavoy.github.io/final-capstone-bart-schedule/git_hub_images/BART-wireframe.JPG)
+![Initial Wireframe](https://github.com/brandylavoy/final-capstone-bart-schedule/blob/master/git_hub_images/BART-wireframe.JPG)
 
 ## Working Prototype
 
