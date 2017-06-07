@@ -139,7 +139,7 @@ function displayScheduleSearchData(dataMatches) {
         buildTheHtmlOutput += '</div>';
         buildTheHtmlOutput += '</div>';
         buildTheHtmlOutput += '<div class="event-description">';
-        buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-play" aria-hidden="true"></i></p>';
+        buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-location-arrow" aria-hidden="true"></i></p>';
         buildTheHtmlOutput += '<p class="departure">  <i class="fa fa-clock-o" aria-hidden="true"></i> ' + dataMatchesValue['@origTimeMin'] + '</p>';
         buildTheHtmlOutput += '<p><i class="fa fa-train" aria-hidden="true"></i> ' + stationToLocation_mapper[dataMatches.origin] + '</p>';
         if (dataMatchesValue.leg.length === 1) {
@@ -165,7 +165,7 @@ function displayScheduleSearchData(dataMatches) {
                 }
             });
         }
-        buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-pause" aria-hidden="true"></i> </p>';
+        buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-map-marker" aria-hidden="true"></i> </p>';
         buildTheHtmlOutput += '<p class="arrival"> <i class="fa fa-clock-o" aria-hidden="true"></i> ' + dataMatchesValue['@destTimeMin'] + '</p>';
         buildTheHtmlOutput += '<p><i class="fa fa-train" aria-hidden="true"></i> ' + stationToLocation_mapper[dataMatches.destination] + ' </p>';
         buildTheHtmlOutput += '<div class="fare"><i class="fa fa-usd" aria-hidden="true"></i>' + dataMatchesValue['@fare'] + '</div>';
@@ -213,7 +213,7 @@ function populateFavoritesContainer() {
                 buildTheHtmlOutput += '</button>';
                 buildTheHtmlOutput += '</form>';
                 buildTheHtmlOutput += '</div>';
-                buildTheHtmlOutput += '<p class="favorites-origin"><i class="fa fa-play" aria-hidden="true"></i> ' + dataOutputValue.origin + '</p> <p class="favorites-destination"><i class="fa fa-pause" aria-hidden="true"></i> ' + dataOutputValue.destination + '</p>';
+                buildTheHtmlOutput += '<p class="favorites-origin"><i class="fa fa-location-arrow" aria-hidden="true"></i> ' + dataOutputValue.origin + '</p> <p class="favorites-destination"><i class="fa fa-map-marker" aria-hidden="true"></i> ' + dataOutputValue.destination + '</p>';
                 buildTheHtmlOutput += '</li>';
                 //                console.log(dataOutput);
             });

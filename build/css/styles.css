@@ -1,6 +1,5 @@
 /*css resets*/
 
-
 * {
     margin: 0;
     padding: 0;
@@ -61,6 +60,7 @@
 
 button {
     background-color: transparent;
+    cursor: pointer;
 }
 
 
@@ -145,15 +145,14 @@ section.display-results .map {
     width: 80%;
     margin: 2rem auto;
     border-radius: 10px;
-    -webkit-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
-    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    box-shadow: 3px 3px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 section.display-results .activity-results .fa#heart {
     color: #0A96D4;
     font-size: 1.5rem;
-
 }
 
 section.display-results .activity-results p {
@@ -197,6 +196,7 @@ section.display-results .activity-results .events .fare {
 section.display-results .activity-results .events .fare .fa {
     color: #FECA33;
 }
+
 
 /*starting the tooltip css*/
 
@@ -242,7 +242,7 @@ a.tooltip span {
 
 /*stopping the tooltip css*/
 
-.dashboard h3{
+.dashboard h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
 }
@@ -254,11 +254,10 @@ a.tooltip span {
     margin-bottom: 1rem;
 }
 
-.favoritesContainer .favorites .favorites-destination{
+.favoritesContainer .favorites .favorites-destination {
     margin-left: 2rem;
-
-
 }
+
 .deleteFavorite {
     float: right;
 }
@@ -273,7 +272,6 @@ a.tooltip span {
         font-size: 1.0rem;
         padding: 0.5rem;
     }
-
     section.display-results .activity-results .events {
         width: 100%;
         margin: 0.5rem auto;
