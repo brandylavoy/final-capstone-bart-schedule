@@ -44,7 +44,9 @@
     -o-padding-after: 0px;
     -o-padding-start: 0px;
     -o-padding-end: 0px;
-    font-family: 'Merriweather', serif;
+    font-family: 'Roboto Mono', monospace;
+    letter-spacing: 0.2rem;
+
 }
 
 
@@ -58,25 +60,36 @@
     font-style: normal;
 }
 
+/*
 button {
     background-color: transparent;
     cursor: pointer;
 }
+*/
 
 
 /*general styling*/
 
 html {
+    background-color: #E9F6FC;
+
+/*    center an image on the entire background of the page*/
+/*
     background: rgba(0, 0, 0, 0) url("../assets/images/background.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
+
+*/
 }
 
 header,
 section {
-    background-image: url("../assets/images/transparent.jpg");
+/*    background-image: url("../assets/images/transparent.jpg");*/
+    background-color: white;
+    border: #C4DAD8;
+
     border-radius: 0.5rem;
     padding: 2rem;
     width: 80%;
@@ -101,16 +114,37 @@ section {
     text-align: center;
 }
 
+section.user-input, .dashboard{
+    display: block !important;
+
+}
+
+
 section form input.search-button {
-    display: block;
-    text-align: center;
-    margin: 1rem auto;
+    display: inline-block;
+    text-align: left;
+    margin-left: 7.5%;
     padding: 0.5rem;
     border-radius: 10px;
     box-shadow: none;
+    background-color: #0A96D4;
+    text-shadow: 1px 1px #004864;
+    color: white;
 }
 
-button#startSearchButton .map {
+.show-favorites{
+    display: inline-block;
+    text-align: left;
+    margin-left: 7.5%;
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: none;
+    background-color: #0A96D4;
+    text-shadow: 1px 1px #004864;
+    color: white;
+}
+
+ .map {
     width: 80%;
     margin: 0 auto;
     text-align: center;
@@ -124,9 +158,10 @@ section ul {
 
 section form select.city-name-origin,
 section form select.city-name-destination {
+    background-color: #BAE5F8;
     margin: 1rem;
     width: 85%;
-    height: 1.5rem;
+    height: 2.5rem;
 }
 
 section.display-results .activity-results .events {
@@ -141,7 +176,7 @@ section.display-results .activity-results .events {
     position: relative;
 }
 
-section.display-results .map {
+.map {
     width: 80%;
     margin: 2rem auto;
     border-radius: 10px;
@@ -245,6 +280,7 @@ a.tooltip span {
 .dashboard h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
+    color: #0A96D4;
 }
 
 .favoritesContainer .favorites {

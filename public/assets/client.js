@@ -51,29 +51,29 @@ var stationToLocation_mapper = {
 }
 
 var route_mapper = {
-        ['ROUTE 1']: "San Francisco Int'l Airport / Millbrae Bound Train",
-        ['ROUTE 2']: "Pittsburg/Bay Point Bound Train",
-        ['ROUTE 3']: "Richmond Bound Train",
-        ['ROUTE 4']: "Fremont Bound Train",
-        ['ROUTE 5']: "Daly City Bound Train",
-        ['ROUTE 6']: "Fremont Bound Train",
-        ['ROUTE 7']: "Daly City/Millbrae Bound Train",
-        ['ROUTE 8']: "Richmond Bound Train",
-        ['ROUTE 11']: "Daly City Bound Train",
-        ['ROUTE 12']: "Dublin/Pleasanton Bound Train",
-        ['ROUTE 19']: "Oakland Int'l Airport Bound Train",
-        ['ROUTE 20']: "Oakland Coliseum Bound Train",
+    ['ROUTE 1']: "San Francisco Int'l Airport / Millbrae Bound Train",
+    ['ROUTE 2']: "Pittsburg/Bay Point Bound Train",
+    ['ROUTE 3']: "Richmond Bound Train",
+    ['ROUTE 4']: "Fremont Bound Train",
+    ['ROUTE 5']: "Daly City Bound Train",
+    ['ROUTE 6']: "Fremont Bound Train",
+    ['ROUTE 7']: "Daly City/Millbrae Bound Train",
+    ['ROUTE 8']: "Richmond Bound Train",
+    ['ROUTE 11']: "Daly City Bound Train",
+    ['ROUTE 12']: "Dublin/Pleasanton Bound Train",
+    ['ROUTE 19']: "Oakland Int'l Airport Bound Train",
+    ['ROUTE 20']: "Oakland Coliseum Bound Train",
 }
 
 var bikes_mapper = {
-        [0]: "No bikes allowed",
-        [1]: "Bikes are allowed"
+    [0]: "No bikes allowed",
+    [1]: "Bikes are allowed"
 }
 
 function populateSelect() {
     $("#cityNameOrigin").html('');
     var buildTheSelectOutput = "";
-    buildTheSelectOutput += '<option value="0" selected> Please select origin station</option>';
+    buildTheSelectOutput += '<option value="0" selected> ORIGIN STATION</option>';
     $.each(stationToLocation_mapper, function (mapperKey, mapperValue) {
         buildTheSelectOutput += '<option value="' + mapperKey + '">' + mapperValue + '</option>';
     });
@@ -86,7 +86,7 @@ function populateSelect() {
 function populateSelectDestination() {
     $("#cityNameDestination").html('');
     var buildTheSelectDestinationOutput = "";
-    buildTheSelectDestinationOutput += '<option value="0" selected> Please select a destination</option>';
+    buildTheSelectDestinationOutput += '<option value="0" selected> DESTINATION STATION</option>';
     $.each(stationToLocation_mapper, function (mapperKey, mapperValue) {
         buildTheSelectDestinationOutput += '<option value="' + mapperKey + '">' + mapperValue + '</option>';
     });
@@ -102,21 +102,21 @@ function populateSelectDestination() {
 function ajaxScheduleSearch(cityNameOrigin, cityNameDestination) {
 
     $.ajax({
-            type: "GET",
-            url: "/schedule/" + cityNameOrigin + "/" + cityNameDestination,
-            dataType: 'json',
-        })
+        type: "GET",
+        url: "/schedule/" + cityNameOrigin + "/" + cityNameDestination,
+        dataType: 'json',
+    })
         .done(function (dataOutput) {
-            //         console.log(dataOutput);
-            displayScheduleSearchData(dataOutput.root);
+        //         console.log(dataOutput);
+        displayScheduleSearchData(dataOutput.root);
 
-            // displayScheduleScheduleResults(JSON.parse(resultsForJsonParse));
-        })
+        // displayScheduleScheduleResults(JSON.parse(resultsForJsonParse));
+    })
         .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
+        console.log(jqXHR);
+        console.log(error);
+        console.log(errorThrown);
+    });
 }
 
 
@@ -189,41 +189,41 @@ function populateFavoritesContainer() {
 
 
     $.ajax({
-            type: "GET",
-            url: "/populate-favorites/",
-            dataType: 'json',
-        })
+        type: "GET",
+        url: "/populate-favorites/",
+        dataType: 'json',
+    })
         .done(function (dataOutput) {
-            console.log(dataOutput);
-            //If successful, set some globals instead of using result object
+        console.log(dataOutput);
+        //If successful, set some globals instead of using result object
 
-            var buildTheHtmlOutput = "";
+        var buildTheHtmlOutput = "";
 
-            $.each(dataOutput, function (dataOutputKey, dataOutputValue) {
+        $.each(dataOutput, function (dataOutputKey, dataOutputValue) {
 
-                buildTheHtmlOutput += '<li class="favorites">';
-                buildTheHtmlOutput += '<div class="deleteFavorite">';
-                buildTheHtmlOutput += '<form class="deleteFavoriteValue">';
-                buildTheHtmlOutput += '<input type="hidden" class="deleteFavoriteValueInput " value="' + dataOutputValue._id + '">';
-                buildTheHtmlOutput += '<input type="hidden" class="addToFavoritesOrigin" value="' + dataOutputValue.origin + '">';
-                buildTheHtmlOutput += '<input type="hidden" class="addToFavoritesDestination" value="' + dataOutputValue.destination + '">';
+            buildTheHtmlOutput += '<li class="favorites">';
+            buildTheHtmlOutput += '<div class="deleteFavorite">';
+            buildTheHtmlOutput += '<form class="deleteFavoriteValue">';
+            buildTheHtmlOutput += '<input type="hidden" class="deleteFavoriteValueInput " value="' + dataOutputValue._id + '">';
+            buildTheHtmlOutput += '<input type="hidden" class="addToFavoritesOrigin" value="' + dataOutputValue.origin + '">';
+            buildTheHtmlOutput += '<input type="hidden" class="addToFavoritesDestination" value="' + dataOutputValue.destination + '">';
 
-                buildTheHtmlOutput += '<button type="submit" class="deleteFavoriteButton">';
-                buildTheHtmlOutput += '<p><i class="fa fa-trash-o" aria-hidden="true"></i></p>';
-                buildTheHtmlOutput += '</button>';
-                buildTheHtmlOutput += '</form>';
-                buildTheHtmlOutput += '</div>';
-                buildTheHtmlOutput += '<p class="favorites-origin"><i class="fa fa-location-arrow" aria-hidden="true"></i> ' + dataOutputValue.origin + '</p> <p class="favorites-destination"><i class="fa fa-map-marker" aria-hidden="true"></i> ' + dataOutputValue.destination + '</p>';
-                buildTheHtmlOutput += '</li>';
-                //                console.log(dataOutput);
-            });
-            $(".favoritesContainer").html(buildTheHtmlOutput);
-        })
-        .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
+            buildTheHtmlOutput += '<button type="submit" class="deleteFavoriteButton">';
+            buildTheHtmlOutput += '<p><i class="fa fa-trash-o" aria-hidden="true"></i></p>';
+            buildTheHtmlOutput += '</button>';
+            buildTheHtmlOutput += '</form>';
+            buildTheHtmlOutput += '</div>';
+            buildTheHtmlOutput += '<p class="favorites-origin"><i class="fa fa-location-arrow" aria-hidden="true"></i> ' + dataOutputValue.origin + '</p> <p class="favorites-destination"><i class="fa fa-map-marker" aria-hidden="true"></i> ' + dataOutputValue.destination + '</p>';
+            buildTheHtmlOutput += '</li>';
+            //                console.log(dataOutput);
         });
+        $(".favoritesContainer").html(buildTheHtmlOutput);
+    })
+        .fail(function (jqXHR, error, errorThrown) {
+        console.log(jqXHR);
+        console.log(error);
+        console.log(errorThrown);
+    });
 }
 
 //document ready function
@@ -231,25 +231,25 @@ $(function () {
     populateFavoritesContainer();
 
     $('#welcome').show();
-    $('#userInput').hide();
-    $('#displayResults').hide();
-    $('#dashboard').hide();
+    $('#userInput').show();
+    $('#displayResults').show();
+    $('#dashboard').show();
 
     populateSelect();
     populateSelectDestination();
 
-    //on start quiz
-    $('#startSearchButton').on('click', function () {
-        $('#welcome').hide();
-        $('#dashboard').hide();
-        $('#userInput').show();
-        $('#displayResults').hide();
-
-    });
+//    //on start quiz
+//    $('#startSearchButton').on('click', function () {
+//        $('#welcome').show();
+//        $('#dashboard').show();
+//        $('#userInput').show();
+//        $('#displayResults').show();
+//
+//    });
 
     $('#searchButton').on('click', function () {
-        $('#welcome').hide();
-        $('#dashboard').show();
+        $('#welcome').show();
+        $('#dashboard').hide();
         $('#userInput').show();
         $('#displayResults').show();
 
@@ -303,21 +303,21 @@ $(document).on('click', '.activity-results .addToFavoritesButton', function (eve
     };
 
     $.ajax({
-            method: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: JSON.stringify(nameObject),
-            url: '/add-to-favorites/',
-        })
+        method: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(nameObject),
+        url: '/add-to-favorites/',
+    })
         .done(function (result) {
 
-            populateFavoritesContainer();
-        })
+        populateFavoritesContainer();
+    })
         .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
+        console.log(jqXHR);
+        console.log(error);
+        console.log(errorThrown);
+    });
 });
 
 
@@ -344,21 +344,21 @@ $(document).on('click', '.schedule-results .myTripButton', function (event) {
     };
 
     $.ajax({
-            method: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            data: JSON.stringify(nameObject),
-            url: '/add-to-favorites/',
-        })
+        method: 'POST',
+        dataType: 'json',
+        contentType: 'application/json',
+        data: JSON.stringify(nameObject),
+        url: '/add-to-favorites/',
+    })
         .done(function (result) {
 
-            populateFavoritesContainer();
-        })
+        populateFavoritesContainer();
+    })
         .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
+        console.log(jqXHR);
+        console.log(error);
+        console.log(errorThrown);
+    });
 });
 
 
@@ -377,17 +377,17 @@ $(document).on('click', '.deleteFavorite', function (event) {
     };
 
     $.ajax({
-            method: 'DELETE',
-            dataType: 'json',
-            contentType: 'application/json',
-            url: '/delete-favorites/' + favoritesIdToDelete,
-        })
+        method: 'DELETE',
+        dataType: 'json',
+        contentType: 'application/json',
+        url: '/delete-favorites/' + favoritesIdToDelete,
+    })
         .done(function (result) {
-            populateFavoritesContainer();
-        })
+        populateFavoritesContainer();
+    })
         .fail(function (jqXHR, error, errorThrown) {
-            console.log(jqXHR);
-            console.log(error);
-            console.log(errorThrown);
-        });
+        console.log(jqXHR);
+        console.log(error);
+        console.log(errorThrown);
+    });
 });

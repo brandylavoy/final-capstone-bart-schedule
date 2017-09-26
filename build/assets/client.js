@@ -46,7 +46,7 @@ var stationToLocation_mapper = {
     "UCTY": "Union City BART Station, Union City, CA",
     "WARM": "Warm Springs BART Station, Fremont, CA",
     "WCRK": "Walnut Creek BART Station, Ygnacio Valley Road, Walnut Creek, CA",
-    "WDUB": "Dublin/Pleasanton BART Station, Owens Drive, Pleasanton, CA",
+    "WDUB": "West Dublin BART Station, Golden Gate Dr Dublin, CA",
     "WOAK": "West Oakland BART Station, 7th Street, Oakland, CA"
 }
 
@@ -274,7 +274,7 @@ $("#scheduleSearch").submit(function (event) {
         // console.log(userInput);
         ajaxScheduleSearch(cityNameOrigin, cityNameDestination);
     }
-    //use that value to call the getResults function defined bellow
+    //use that value to call the getResults function defined below
 
 });
 

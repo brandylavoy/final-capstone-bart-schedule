@@ -1,63 +1,51 @@
 <!doctype html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <title>BART Schedule</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css" type="text/css" />
-    <link href="/favicon.ico" type="image/x-icon" rel="icon" />
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <title>BART Schedule</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css" type="text/css" />
+        <link href="/favicon.ico" type="image/x-icon" rel="icon" />
+    </head>
 
-<body>
-    <header id="reactHeader" class="reactHeader">
+    <body>
 
-    </header>
-    <section class="welcome" id="welcome">
-        <h1>Click the map to search the BART schedule</h1>
+            <section class="user-input" id="userInput">
+                <form id="scheduleSearch" class="search">
+                    <select name="cityNameOrigin" id="cityNameOrigin" class="city-name-origin">
+                    </select>
+                    <select name="cityNameDestination" id="cityNameDestination" class="city-name-destination">
+                    </select>
+                    <input id="searchButton" type="submit" value="SUBMIT" class="search-button" />
+                    <button type="button" class="show-favorites" id="showFavorites"><i class="fa fa-heart" aria-hidden="true"></i></button>
+                </form>
+            </section>
 
-        <!--       click this button to show the search form-->
-        <button id="startSearchButton" type="submit"><img src="assets/images/BART_cc_map_20141029.png" class="map" id="map"></button>
-    </section>
-    <section class="user-input" id="userInput">
-        <form id="scheduleSearch" class="search">
-            <select name="cityNameOrigin" id="cityNameOrigin" class="city-name-origin">
-            </select>
+        <section class="dashboard" id="dashboard">
+            <h3>FAVORITE ROUTES</h3>
+            <ul class="favoritesContainer" id="favoritesContainer">
+
+            </ul>
+        </section>
+
+        <section class="welcome" id="welcome">
+           <img src="assets/images/BART_cc_map_20141029.png" class="map" id="map">
+        </section>
 
 
-            <select name="cityNameDestination" id="cityNameDestination" class="city-name-destination">
-            </select>
-            <input id="searchButton" type="submit" value="Submit" class="search-button" />
-
-            <!--           <button id="reset" onClick="window.location.reload()" class="reset">Reset Search</button>-->
-        </form>
-    </section>
-
-    <div id="reactResults" class=reactResults></div>
-<!--
-    <section class="display-results" id="displayResults">
-        <ul class="activity-results">
-        </ul>
-    </section>
--->
-    <section class="dashboard" id="dashboard">
-        <h3>Favorite Routes</h3>
-        <ul class="favoritesContainer" id="favoritesContainer">
-
-        </ul>
-    </section>
-
-<!--    <div id="reactFavorites" class="reactFavorites"></div>-->
+        <div id="reactResults" class=reactResults></div>
 
 
 
-    <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="assets/client.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
+
+        <script src="https://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="assets/client.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
 
 
 
-</body>
+    </body>
 
 </html>

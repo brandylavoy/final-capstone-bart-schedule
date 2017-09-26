@@ -11,7 +11,7 @@ app.use(express.static('build'));
 
 
 var stationsArray = [
-    ]
+]
 
 var runServer = function (callback) {
     mongoose.connect(config.DATABASE_URL, function (err) {
@@ -63,21 +63,21 @@ var getFromBart = function (cityNameOrigin, cityNameDestination) {
     // These code snippets use an open-source library. http://unirest.io/nodejs
     unirest.get("https://community-bart.p.mashape.com/sched.aspx?cmd=depart&b=0&a=4&dest=" + cityNameDestination + "&orig=" + cityNameOrigin + "&json=y ")
         .header("X-Mashape-Key", "poOJuuOnJ6mshQZP2u4lJ6vdAISUp1ob0hnjsnif57TGxBXMwj")
-        //        .header("Accept", "text/plain")
+    //        .header("Accept", "text/plain")
         .header("Accept", "application/json")
         .end(function (result) {
 
-            //console.log(result.status, result.headers, result.body);
-            //success scenario
-            if (result.ok) {
-                emitter.emit('end', result.body);
-            }
-            //failure scenario
-            else {
-                emitter.emit('error', result.status);
-            }
-            console.log(result.status, result.headers, result.body);
-        });
+        //console.log(result.status, result.headers, result.body);
+        //success scenario
+        if (result.ok) {
+            emitter.emit('end', result.body);
+        }
+        //failure scenario
+        else {
+            emitter.emit('error', result.status);
+        }
+        console.log(result.status, result.headers, result.body);
+    });
 
     return emitter;
 };
