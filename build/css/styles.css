@@ -72,6 +72,9 @@ button {
 
 html {
     background-color: #E9F6FC;
+    color: #414042;
+
+/*    center an image on the entire background of the page*/
 /*
     background: rgba(0, 0, 0, 0) url("../assets/images/background.jpg") no-repeat center center fixed;
     -webkit-background-size: cover;
@@ -94,7 +97,7 @@ section {
     margin-bottom: 1rem;
     margin-left: auto;
     margin-right: auto;
-    color: white;
+    color: #414042;
 }
 
 header {
@@ -112,13 +115,29 @@ section {
     text-align: center;
 }
 
+section.user-input, .dashboard{
+    display: block !important;
 
+}
 
 
 section form input.search-button {
-    display: block;
+    display: inline-block;
     text-align: left;
-    margin: 1rem;
+    margin-left: 7.5% !important;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-radius: 10px;
+    box-shadow: none;
+    background-color: #0A96D4;
+    text-shadow: 1px 1px #004864;
+    color: white;
+}
+
+.show-favorites{
+    display: inline-block;
+    text-align: left;
+    margin-left: 7.5%;
     padding: 0.5rem;
     border-radius: 10px;
     box-shadow: none;
@@ -149,7 +168,7 @@ section form select.city-name-destination {
 
 section.display-results .activity-results .events {
     display: inline-block;
-    width: 47%;
+    width: 80%;
     border-bottom: 1px solid white;
     margin-left: 1%;
     margin-right: 1%;
@@ -199,7 +218,7 @@ section.display-results .activity-results .events .arrow-separator {
 }
 
 section.display-results .activity-results .events .arrow-separator .fa {
-    color: white;
+    color: #414042;
 }
 
 section.display-results .activity-results .events .fare {

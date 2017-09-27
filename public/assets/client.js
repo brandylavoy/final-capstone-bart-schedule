@@ -175,7 +175,7 @@ function displayScheduleSearchData(dataMatches) {
         buildTheHtmlOutput += '</li>';
         console.log(dataMatchesValue);
     });
-    buildTheHtmlOutput += '<img src="assets/images/BART_cc_map_20141029.png" class="map" id="map">';
+//    buildTheHtmlOutput += '<img src="assets/images/BART_cc_map_20141029.png" class="map" id="map">';
     buildTheHtmlOutput += '</ul>';
     //use the HTML output to show it in the index.html
     $('.display-results').html(buildTheHtmlOutput);
@@ -232,26 +232,26 @@ $(function () {
 
     $('#welcome').show();
     $('#userInput').show();
-    $('#displayResults').show();
+    $('#reactResults').hide();
     $('#dashboard').show();
 
     populateSelect();
     populateSelectDestination();
 
 //    //on start quiz
-//    $('#startSearchButton').on('click', function () {
-//        $('#welcome').show();
-//        $('#dashboard').show();
-//        $('#userInput').show();
-//        $('#displayResults').show();
-//
-//    });
+    $('#startSearchButton').on('click', function () {
+        $('#welcome').show();
+        $('#dashboard').hide();
+        $('#userInput').show();
+        $('#reactResults').show();
+
+    });
 
     $('#searchButton').on('click', function () {
         $('#welcome').show();
         $('#dashboard').hide();
         $('#userInput').show();
-        $('#displayResults').show();
+        $('#reactResults').show();
 
     });
 });

@@ -8,8 +8,7 @@ import Results from './components/Results';
 
 
 
-document.addEventListener('DOMContentLoaded', () =>     ReactDOM.render(<Header />, document.getElementById('reactHeader'))
-);
+
 
 document.addEventListener('DOMContentLoaded', () =>      ReactDOM.render(
     <div>
