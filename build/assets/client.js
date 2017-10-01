@@ -140,14 +140,13 @@ function displayScheduleSearchData(dataMatches) {
         buildTheHtmlOutput += '</div>';
         buildTheHtmlOutput += '<div class="event-description">';
         buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-location-arrow" aria-hidden="true"></i></p>';
-        buildTheHtmlOutput += '<p class="departure">  <i class="fa fa-clock-o" aria-hidden="true"></i> ' + dataMatchesValue['@origTimeMin'] + '</p>';
-        buildTheHtmlOutput += '<p><i class="fa fa-train" aria-hidden="true"></i> ' + stationToLocation_mapper[dataMatches.origin] + '</p>';
+        buildTheHtmlOutput += '<p>' + dataMatchesValue['@origTimeMin'] + ' ' + '<span class="departure">' + stationToLocation_mapper[dataMatches.origin] + '</span>' + '</p>';
         if (dataMatchesValue.leg.length === 1) {
-            buildTheHtmlOutput += '<p>' + route_mapper[dataMatchesValue.leg['@line']] + ' (' + dataMatchesValue.leg.length + ')</p>';
+            buildTheHtmlOutput += '<p>' + route_mapper[dataMatchesValue.leg['@transfercode']] + ' (' + dataMatchesValue.leg.length + ')</p>';
             buildTheHtmlOutput += '<p> ' + bikes_mapper[dataMatchesValue.leg['@bikeflag']] + '</p>';
         } else {
             $.each(dataMatchesValue.leg, function (legKey, legValue) {
-                if (route_mapper[legValue['@line']] !== undefined) {
+                if (route_mapper[legValue['@transfercode']] !== undefined) {
                     buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></p>';
                     buildTheHtmlOutput += '<p><i class="fa fa-forward" aria-hidden="true"></i> ' + (legKey + 1) + ': ' + route_mapper[legValue['@line']];
                 }
@@ -166,8 +165,8 @@ function displayScheduleSearchData(dataMatches) {
             });
         }
         buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-map-marker" aria-hidden="true"></i> </p>';
-        buildTheHtmlOutput += '<p class="arrival"> <i class="fa fa-clock-o" aria-hidden="true"></i> ' + dataMatchesValue['@destTimeMin'] + '</p>';
-        buildTheHtmlOutput += '<p><i class="fa fa-train" aria-hidden="true"></i> ' + stationToLocation_mapper[dataMatches.destination] + ' </p>';
+        buildTheHtmlOutput += '<p>' + dataMatchesValue['@destTimeMin'] + ' ' + '<span class="arrival">' + stationToLocation_mapper[dataMatches.destination] + '</span>' + '</p>';
+//        buildTheHtmlOutput += '<p> ' + stationToLocation_mapper[dataMatches.destination] + ' </p>';
         buildTheHtmlOutput += '<div class="fare"><i class="fa fa-usd" aria-hidden="true"></i>' + dataMatchesValue['@fare'] + '</div>';
 
 
@@ -234,6 +233,7 @@ $(function () {
     $('#userInput').show();
     $('#reactResults').hide();
     $('#dashboard').show();
+    $('#loading').hide();
 
     populateSelect();
     populateSelectDestination();

@@ -4,8 +4,9 @@
     <head>
         <meta charset="UTF-8">
         <title>BART Schedule</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
         <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
         <link rel="stylesheet" href="css/styles.css" type="text/css" />
         <link href="/favicon.ico" type="image/x-icon" rel="icon" />
     </head>
@@ -14,14 +15,17 @@
 
             <section class="user-input" id="userInput">
                 <form id="scheduleSearch" class="search">
+                    <h1>WHERE WILL   <img src="assets/images/Bart-logo.svg" alt="BART LOGO"> TAKE YOU?</h1>
+
                     <select name="cityNameOrigin" id="cityNameOrigin" class="city-name-origin">
                     </select>
                     <select name="cityNameDestination" id="cityNameDestination" class="city-name-destination">
                     </select>
-                    <input id="searchButton" type="submit" value="SUBMIT" class="search-button" />
+                    <input id="searchButton" type="submit" value="Find Next Available Bart Trips" class="search-button" />
                     <button type="button" class="show-favorites" id="showFavorites"><i class="fa fa-heart" aria-hidden="true"></i></button>
                 </form>
             </section>
+        <div class="loading" id="loading">Loading&#8230;</div>
         <div id="reactResults" class=reactResults></div>
         <section class="dashboard" id="dashboard">
             <h3>FAVORITE ROUTES</h3>
