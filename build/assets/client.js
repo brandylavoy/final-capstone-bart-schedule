@@ -133,7 +133,7 @@ function displayScheduleSearchData(dataMatches) {
         buildTheHtmlOutput += '<input type="hidden" class="addToFavoritesOrigin" value="' + stationToLocation_mapper[dataMatches.origin] + '">';
         buildTheHtmlOutput += '<input type="hidden" class="addToFavoritesDestination" value="' + stationToLocation_mapper[dataMatches.destination] + '">';
         buildTheHtmlOutput += '<button type="submit" class="addToFavoritesButton" id="addToFavoritesButton">';
-        buildTheHtmlOutput += '<i class="fa fa-heart" aria-hidden="true" id="heart"></i>';
+        buildTheHtmlOutput += '<i class="fa fa-star" aria-hidden="true" id="star"></i>';
         buildTheHtmlOutput += '</button>';
         buildTheHtmlOutput += '</form>';
         buildTheHtmlOutput += '</div>';
@@ -142,11 +142,11 @@ function displayScheduleSearchData(dataMatches) {
         buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-location-arrow" aria-hidden="true"></i></p>';
         buildTheHtmlOutput += '<p>' + dataMatchesValue['@origTimeMin'] + ' ' + '<span class="departure">' + stationToLocation_mapper[dataMatches.origin] + '</span>' + '</p>';
         if (dataMatchesValue.leg.length === 1) {
-            buildTheHtmlOutput += '<p>' + route_mapper[dataMatchesValue.leg['@transfercode']] + ' (' + dataMatchesValue.leg.length + ')</p>';
+            buildTheHtmlOutput += '<p>' + route_mapper[dataMatchesValue.leg['@line']] + ' (' + dataMatchesValue.leg.length + ')</p>';
             buildTheHtmlOutput += '<p> ' + bikes_mapper[dataMatchesValue.leg['@bikeflag']] + '</p>';
         } else {
             $.each(dataMatchesValue.leg, function (legKey, legValue) {
-                if (route_mapper[legValue['@transfercode']] !== undefined) {
+                if (route_mapper[legValue['@transfercode']] !== "") {
                     buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></p>';
                     buildTheHtmlOutput += '<p><i class="fa fa-forward" aria-hidden="true"></i> ' + (legKey + 1) + ': ' + route_mapper[legValue['@line']];
                 }
@@ -174,7 +174,6 @@ function displayScheduleSearchData(dataMatches) {
         buildTheHtmlOutput += '</li>';
         console.log(dataMatchesValue);
     });
-//    buildTheHtmlOutput += '<img src="assets/images/BART_cc_map_20141029.png" class="map" id="map">';
     buildTheHtmlOutput += '</ul>';
     //use the HTML output to show it in the index.html
     $('.display-results').html(buildTheHtmlOutput);
@@ -252,8 +251,13 @@ $(function () {
         $('#dashboard').hide();
         $('#userInput').show();
         $('#reactResults').show();
+        $('#loading').hide();
 
     });
+
+    $('#showFavorites').on('click', function() {
+        $('#dashboard').toggle();
+    })
 });
 
 

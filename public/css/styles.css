@@ -71,23 +71,11 @@ html {
     background-color: #E9F6FC;
     color: #414042;
 
-/*    center an image on the entire background of the page*/
-/*
-    background: rgba(0, 0, 0, 0) url("../assets/images/background.jpg") no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-
-*/
 }
 
-header,
 section {
-/*    background-image: url("../assets/images/transparent.jpg");*/
     background-color: white;
     border: #C4DAD8;
-
     border-radius: 0.5rem;
     padding: 2rem;
     width: 80%;
@@ -95,18 +83,10 @@ section {
     margin-left: auto;
     margin-right: auto;
     color: #414042;
-}
-
-header {
+    margin-top: 1rem;
     text-align: center;
-    font-size: 2.0rem;
-    padding: 1rem;
 }
 
-header .logo {
-    height: 2.0rem;
-    padding-right: 1rem;
-}
 
 h1 {
     font-size: 1.8rem;
@@ -114,9 +94,6 @@ h1 {
     color: #0A96D4;
 }
 
-section {
-    text-align: center;
-}
 
 /* Absolute Center Spinner */
 .loading {
@@ -238,12 +215,8 @@ section {
     }
 }
 
-.fa fa-heart{
+.fa fa-star{
     text-decoration: none;
-}
-section.user-input, .dashboard{
-    display: block !important;
-
 }
 
 section.user-input form h1 img {
@@ -251,27 +224,6 @@ section.user-input form h1 img {
 }
 
 
-section form input.search-button, .show-favorites {
-    display: inline;
-    text-align: left;
-    margin-top: 1rem;
-    padding: 0.5rem;
-    border-radius: 5px;
-    box-shadow: none;
-    background-color: #0A96D4;
-    text-shadow: 1px 1px #004864;
-    color: white;
-    cursor: pointer;
-}
-
-
- .map {
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
-    margin: 1rem;
-    border-radius: 10px;
-}
 
 section ul {
     list-style: none;
@@ -279,16 +231,26 @@ section ul {
 
 section form select.city-name-origin,
 section form select.city-name-destination {
-    background-color: #BAE5F8;
+    background-color: #E9F6FC;
     margin: 1rem;
     width: 85%;
     height: 2.5rem;
 }
 
-section.user-input form.search input, button{
+section form input.search-button, .show-favorites {
+    display: inline;
     text-align: left;
-
-
+    margin-top: 1rem;
+    border-radius: 5px;
+    box-shadow: none;
+    background-color: #0A96D4;
+    text-shadow: 1px 1px #004864;
+    color: white;
+    cursor: pointer;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 0.8rem;
+    padding-right: 0.8rem;
 }
 
 section.display-results .activity-results .events {
@@ -304,15 +266,13 @@ section.display-results .activity-results .events {
 }
 
 .map {
-    width: 80%;
+    width: 85%;
     margin: 2rem auto;
-    border-radius: 10px;
-    -webkit-box-shadow: 1px 1px 4px 0px #C4DAD8;
-    -moz-box-shadow: 1px 1px 4px 0px #C4DAD8;
-    box-shadow: 1px 1px 4px 0px #C4DAD8;
+    border-radius: 5px;
+    text-align: center;
 }
 
-section.display-results .activity-results .fa#heart {
+section.display-results .activity-results .fa#star {
     color: #0A96D4;
     font-size: 1.5rem;
     background-color: white;
@@ -327,7 +287,7 @@ section.display-results .activity-results p {
 
 section.display-results .activity-results p span.departure, .arrival{
     font-size: 0.75rem;
-    color: lightgray;
+    color: #a0a0a0;
 
 }
 
@@ -336,7 +296,7 @@ section.display-results .activity-results .fa {
 }
 
 .highlight i {
-    color: #E53F45 !important;
+    color: #8BC73D !important;
 
 }
 
@@ -414,6 +374,12 @@ a.tooltip span {
 
 /*stopping the tooltip css*/
 
+.dashboard ul{
+    width: 85%;
+    margin: 0 auto;
+}
+
+
 .dashboard h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
@@ -442,16 +408,11 @@ a.tooltip span {
 }
 
 @media only screen and (max-width: 800px) {
-    header {
-        font-size: 1.0rem;
-        padding: 0.5rem;
-    }
     section{
         padding: 1rem;
     }
 
     section.display-results .activity-results .events {
-        width: 100%;
         margin: 0.5rem auto;
         display: block;
     }
