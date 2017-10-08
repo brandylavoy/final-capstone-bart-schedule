@@ -96,7 +96,7 @@ function populateSelectDestination() {
     $("#cityNameDestination").html(buildTheSelectDestinationOutput);
 }
 
-// search for running activities
+// search for bart schedule
 // local ajax call to the server external api
 
 function ajaxScheduleSearch(cityNameOrigin, cityNameDestination) {
@@ -141,14 +141,14 @@ function displayScheduleSearchData(dataMatches) {
         buildTheHtmlOutput += '<div class="event-description">';
         buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-location-arrow" aria-hidden="true"></i></p>';
         buildTheHtmlOutput += '<p>' + dataMatchesValue['@origTimeMin'] + ' ' + '<span class="departure">' + stationToLocation_mapper[dataMatches.origin] + '</span>' + '</p>';
-        if (dataMatchesValue.leg.length === 1) {
+        if (dataMatchesValue.leg.transfercode === "") {
             buildTheHtmlOutput += '<p>' + route_mapper[dataMatchesValue.leg['@line']] + ' (' + dataMatchesValue.leg.length + ')</p>';
             buildTheHtmlOutput += '<p> ' + bikes_mapper[dataMatchesValue.leg['@bikeflag']] + '</p>';
         } else {
             $.each(dataMatchesValue.leg, function (legKey, legValue) {
-                if (route_mapper[legValue['@transfercode']] !== "") {
-                    buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></p>';
-                    buildTheHtmlOutput += '<p><i class="fa fa-forward" aria-hidden="true"></i> ' + (legKey + 1) + ': ' + route_mapper[legValue['@line']];
+                if (route_mapper[legValue['@line']] !== "") {
+//                    buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></p>';
+                    buildTheHtmlOutput += '<p> Board Train ' + (legKey + 1) + ': ' + route_mapper[legValue['@line']];
                 }
                 if (bikes_mapper[legValue['@bikeflag']] !== undefined) {
                     buildTheHtmlOutput += '<a href="#" class="tooltip">';
@@ -212,6 +212,7 @@ function populateFavoritesContainer() {
             buildTheHtmlOutput += '</form>';
             buildTheHtmlOutput += '</div>';
             buildTheHtmlOutput += '<p class="favorites-origin"><i class="fa fa-location-arrow" aria-hidden="true"></i> ' + dataOutputValue.origin + '</p> <p class="favorites-destination"><i class="fa fa-map-marker" aria-hidden="true"></i> ' + dataOutputValue.destination + '</p>';
+
             buildTheHtmlOutput += '</li>';
             //                console.log(dataOutput);
         });

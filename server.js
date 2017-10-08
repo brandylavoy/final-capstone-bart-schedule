@@ -36,26 +36,7 @@ if (require.main === module) {
     });
 };
 
-//// external API call
-//var getFromActive = function(searchTerm) {
-//    var emitter = new events.EventEmitter();
-//    //console.log("inside getFromActive function");
-//    unirest.get("http://api.amp.active.com/v2/search?topicName=Running&registerable_only=true&category=races&attributeValue=5k&sort=date_asc&per_page=24&near="+searchTerm+",US&radius=50&api_key=2e4ra5w6b9augfrn54vjb4bx")
-//        .header("Accept", "application/json")
-//        .end(function(result) {
-//        //console.log(result.status, result.headers, result.body);
-//        //success scenario
-//        if (result.ok) {
-//            emitter.emit('end', result.body);
-//        }
-//        //failure scenario
-//        else {
-//            emitter.emit('error', result.code);
-//        }
-//    });
-//
-//    return emitter;
-//};
+
 
 var getFromBart = function (cityNameOrigin, cityNameDestination) {
     var emitter = new events.EventEmitter();
