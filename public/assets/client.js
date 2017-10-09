@@ -100,13 +100,14 @@ function populateSelectDestination() {
 // local ajax call to the server external api
 
 function ajaxScheduleSearch(cityNameOrigin, cityNameDestination) {
-
+    $('#loading').show();
     $.ajax({
         type: "GET",
         url: "/schedule/" + cityNameOrigin + "/" + cityNameDestination,
         dataType: 'json',
     })
         .done(function (dataOutput) {
+        $('#loading').hide();
         //         console.log(dataOutput);
         displayScheduleSearchData(dataOutput.root);
 
@@ -238,21 +239,13 @@ $(function () {
     populateSelect();
     populateSelectDestination();
 
-//    //on start quiz
-    $('#startSearchButton').on('click', function () {
-        $('#welcome').show();
-        $('#dashboard').hide();
-        $('#userInput').show();
-        $('#reactResults').show();
-
-    });
 
     $('#searchButton').on('click', function () {
         $('#welcome').show();
         $('#dashboard').hide();
         $('#userInput').show();
         $('#reactResults').show();
-        $('#loading').show();
+
 
     });
 
@@ -279,7 +272,7 @@ $("#scheduleSearch").submit(function (event) {
         // console.log(userInput);
         ajaxScheduleSearch(cityNameOrigin, cityNameDestination);
     }
-    //use that value to call the getResults function defined bellow
+    //use that value to call the getResults function defined below
 
 });
 
@@ -300,7 +293,6 @@ $(document).on('click', '.activity-results .addToFavoritesButton', function (eve
 
     var addToFavoritesOrigin = $(this).parent().find('.addToFavoritesOrigin').val();
     var addToFavoritesDestination = $(this).parent().find('.addToFavoritesDestination').val();
-    //    var favoritesUrlValue = $(this).parent().find('.addToFavoritesUrlValue').val();
 
     var nameObject = {
         'origin': addToFavoritesOrigin,
