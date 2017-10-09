@@ -125,7 +125,7 @@ function displayScheduleSearchData(dataMatches) {
     console.log(dataMatches);
     //create an empty variable to store one LI for each of the results
 
-    var buildTheHtmlOutput = '<ul class="activity-results">';
+    var buildTheHtmlOutput = '  <h3>UPCOMING DEPARTURES</h3>' + '<ul class="activity-results">';
     $.each(dataMatches.schedule.request.trip, function (dataMatchesKey, dataMatchesValue) {
         //create and populate one LI for each of the results
         buildTheHtmlOutput += '<li class="events">';
@@ -149,7 +149,7 @@ function displayScheduleSearchData(dataMatches) {
             $.each(dataMatchesValue.leg, function (legKey, legValue) {
                 if (route_mapper[legValue['@line']] !== "") {
 //                    buildTheHtmlOutput += '<p class="arrow-separator"><i class="fa fa-arrow-circle-down" aria-hidden="true"></i></p>';
-                    buildTheHtmlOutput += '<p> Board Train ' + (legKey + 1) + ': ' + route_mapper[legValue['@line']];
+                    buildTheHtmlOutput += '<p> Board ' + (legKey + 1) + ': ' + route_mapper[legValue['@line']];
                 }
                 if (bikes_mapper[legValue['@bikeflag']] !== undefined) {
                     buildTheHtmlOutput += '<a href="#" class="tooltip">';

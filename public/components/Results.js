@@ -8,6 +8,7 @@ export default class Results extends React.Component {
     render(){
         return (
             <section className="display-results">
+
                 <ul className="activity-results">
                 </ul>
             </section>
